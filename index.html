@@ -98,12 +98,22 @@
     }
 
     .nav-search {
-      background: none;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
       border: none;
       cursor: pointer;
       color: var(--dark);
-      font-size: 1.1rem;
-      padding: 4px;
+      font-size: 1.25rem;
+      border-radius: 4px;
+    }
+
+    .nav-search:hover {
+      background: var(--off);
+      color: var(--blue);
     }
 
     /* ── HERO — Full bleed with overlay ── */
