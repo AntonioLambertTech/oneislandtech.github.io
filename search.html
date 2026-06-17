@@ -21,6 +21,10 @@ const pages = [
 ];
 
 document.getElementById('searchBox').addEventListener('input', function() {
+    if (search.trim() === "") {
+    document.getElementById('results').innerHTML = "";
+    return;
+    }
     const search = this.value.toLowerCase();
 
     const results = pages.filter(page =>
@@ -28,10 +32,15 @@ document.getElementById('searchBox').addEventListener('input', function() {
         page.text.toLowerCase().includes(search)
     );
 
+    if (results.length === 0) {
+    document.getElementById('results').innerHTML =
+        "<p>No results found.</p>";
+} else {
     document.getElementById('results').innerHTML =
         results.map(page =>
             `<p><a href="${page.url}">${page.title}</a></p>`
         ).join('');
+}
 });
 </script>
 
