@@ -70,26 +70,11 @@
       background: var(--dark);
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-
-    /* Hexagon SVG logo */
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-    }
-
-    .nav-logo-text {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+  .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
 
     .nav-right {
       display: flex;
