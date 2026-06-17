@@ -76,6 +76,22 @@
 
     /* Placeholder — replace with real image via style="background-image:url(...)" */
     .hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(5,15,35,0.3) 0%,
+            rgba(5,15,35,0.1) 40%,
+            rgba(5,15,35,0.85) 100%
+        ),
+        url('overAll.PNG');
+
+    background-size: cover;
+    background-position: center;
+}
+   /* <!-- .hero-bg {
       position: absolute;
       inset: 0;
       background:
@@ -88,7 +104,7 @@
         linear-gradient(135deg, #0A1628 0%, #0D2444 30%, #0A2840 60%, #051020 100%);
       background-size: cover;
       background-position: center;
-    }
+    } */
 
     /* Cinematic star field for placeholder */
     .hero-bg::before {
@@ -752,10 +768,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"
+    <div class="hero-bg">
 
-     style="background-image: url('overAll.PNG'); background-size: cover; background-position: center;">
-    </div>
+    </div> 
     <div class="hero-content">
       <span class="hero-label">One Island Tech</span>
       <h1 class="hero-title">
