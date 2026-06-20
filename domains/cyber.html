@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber, One Island Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FFFFFF; --off: #F4F5F7; --rule: #E0E3E8;
+      --muted: #8A939E; --mid: #4A5568; --dark: #1A202C;
+      --navy: #0A1628; --blue: #0050A0; --blue2: #003878; --signal: #00C896;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--dark); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--rule); }
+    .nav-utility { background: var(--navy); padding: 0 2.5rem; height: 32px; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+    .nav-utility a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-utility a:hover { color: var(--white); }
+    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
+    .nav-links > li { position: relative; display: flex; align-items: center; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-links > li > a.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-chevron { font-size: 0.55rem; transition: transform 0.2s; }
+    .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--white); border-top: 3px solid var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+    .nav-links > li:hover .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.15s, color 0.15s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { background: var(--off); color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-partner-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--blue); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.2rem; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    .nav-partner-btn:hover { background: var(--blue2); }
+
+    /* HERO */
+    .hero { position: relative; height: 65vh; min-height: 55vh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; margin-top: 70px; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,15,35,0.1) 0%, rgba(5,15,35,0.75) 100%), linear-gradient(135deg, #001A10 0%, #003828 60%, #000F08 100%); background-size: cover; background-position: center; }
+    
+    .hero-content { position: relative; z-index: 2; padding: 0 2.5rem 3.5rem; max-width: 900px; }
+    .breadcrumb { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.75rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+    .hero-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.75rem; }
+    .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .hero-title strong { font-weight: 700; }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 580px; line-height: 1.65; }
+    .status-pill { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .status-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .status-live { color: var(--signal); }
+    .status-live::before { background: var(--signal); }
+    .status-dev { color: #FFB347; }
+    .status-dev::before { background: #FFB347; }
+    .status-roadmap { color: rgba(255,255,255,0.45); }
+    .status-roadmap::before { background: rgba(255,255,255,0.45); }
+
+    /* CONTENT */
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* PROBLEM / SOLUTION */
+    .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 2px solid var(--navy); margin: 4rem 0 0; }
+    .ps-block { padding: 2.5rem 2rem; border-right: 1px solid var(--rule); }
+    .ps-block:last-child { border-right: none; }
+    .ps-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .ps-headline { font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; line-height: 1.3; }
+    .ps-body { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+    /* WHO */
+    .who-section { padding: 4rem 0; border-top: 1px solid var(--rule); margin-top: 4rem; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark); display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 2px; background: var(--blue); }
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .who-card { background: var(--off); padding: 1.5rem; border-top: 3px solid var(--blue); }
+    .who-card-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .who-card-body { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+
+    /* SPECS */
+    .specs-section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+    .specs-table { width: 100%; border-collapse: collapse; border-top: 2px solid var(--navy); }
+    .specs-table tr { border-bottom: 1px solid var(--rule); }
+    .specs-table tr:hover td { background: var(--off); }
+    .spec-label { padding: 1rem 1.5rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); width: 35%; }
+    .spec-val { padding: 1rem 1.5rem; font-size: 0.88rem; color: var(--dark); font-weight: 500; }
+
+    /* DARK CTA */
+    .cta-band { background: var(--navy); padding: 4rem 2.5rem; margin-top: 4rem; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .cta-text h2 { font-size: 1.5rem; font-weight: 300; color: var(--white); margin-bottom: 0.5rem; }
+    .cta-text h2 strong { font-weight: 700; }
+    .cta-text p { font-size: 0.9rem; color: rgba(255,255,255,0.55); max-width: 440px; line-height: 1.65; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--signal); color: var(--navy); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 1.75rem; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* FOOTER */
+    .footer-top { background: var(--navy); padding: 2.5rem 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo-block { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .footer-logo-block img { width: 32px; height: 32px; object-fit: contain; display: block; filter: brightness(0) invert(1); }
+    .footer-logo-text { font-size: 0.95rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-cols { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { font-size: 0.82rem; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { background: var(--navy); padding: 1rem 2.5rem 1.75rem; }
+    .footer-bottom-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+    .footer-badges { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .footer-badge { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; }
+    .footer-badge-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--signal); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-partner-btn { display: none; }
+      .nav-utility { display: none; }
+      .hero { margin-top: 104px; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .ps-block { border-right: none; border-bottom: 1px solid var(--rule); }
+      .who-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <style>
+    .cyber-hub {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .hub-intro-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+    .hub-intro-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.25;
+      max-width: 700px;
+      margin-bottom: 1.25rem;
+    }
+    .hub-intro-headline strong { font-weight: 700; }
+    .hub-intro-body {
+      font-size: 0.95rem;
+      color: var(--mid);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 4rem;
+    }
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      border-top: 2px solid var(--navy);
+      padding-top: 3rem;
+    }
+    .hub-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      background: var(--white);
+    }
+    .hub-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 32px rgba(0,80,160,0.12);
+      transform: translateY(-3px);
+    }
+    .hub-card-header {
+      background: var(--navy);
+      padding: 2.5rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-card-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,200,150,0.1) 0%, transparent 60%);
+    }
+    .hub-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hub-card-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+      line-height: 1.2;
+    }
+    .hub-card-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-top: 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hub-card-body {
+      padding: 1.75rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .hub-card-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+    .hub-card-cta {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+    .hub-card:hover .hub-card-cta { gap: 0.9rem; }
+    @media (max-width: 768px) {
+      .hub-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-main">
+      <a class="nav-logo" href="../index.html">
+        <img src="data:image/png;base64,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" alt="One Island LLC" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">One Island Tech</span>
+          <!-- <span class="nav-logo-sub">Communication Infrastructure</span> -->
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="../index.html#who">Who We Are <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="../mission.html">Our Mission</a>
+            <a href="../labs.html">One Island Labs</a>
+            <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
+          </div>
+        </li>
+        <li>
+          <a href="../index.html#domains" class="active">What We Do <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="sea.html">Sea</a>
+            <a href="land.html">Land</a>
+            <a href="air.html">Air</a>
+            <a href="space.html">Space</a>
+            <a href="cyber.html">Cyber</a>
+            <a href="subterranean.html">Subterranean</a>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-right">
+     <!--   <a href="mailto:contact@oneislandtech.com" class="nav-partner-btn">Partner Inquiry &#8594;</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" style="height:44vh;min-height:320px;">
+    <div class="hero-bg" style="background: linear-gradient(to bottom, rgba(5,15,35,0.15) 0%, rgba(5,15,35,0.85) 100%), linear-gradient(135deg, #001A10 0%, #003828 60%, #000F08 100%);">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,200,150,0.06) 1px, transparent 1px),linear-gradient(90deg, rgba(0,200,150,0.06) 1px, transparent 1px);background-size:48px 48px;"></div>
+    </div>
+    <div class="hero-content" style="padding: 0 2.5rem 2.5rem; max-width: 800px;">
+      <p class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="../index.html#domains">Domains</a> &nbsp;/&nbsp; Cyber</p>
+      <span class="hero-eyebrow">One Island Tech, Cyber Domain</span>
+      <h1 class="hero-title" style="font-size:clamp(1.5rem,3vw,2.4rem);">The protocols that<br />protect communication<br /><strong>at every layer.</strong></h1>
+      <p class="hero-sub">The Cyber domain is One Island's encryption and command infrastructure stack, three independent systems that can be used separately or together.</p>
+    </div>
+  </section>
+
+  <div class="cyber-hub">
+    <p class="hub-intro-label">Choose a capability</p>
+    <h2 class="hub-intro-headline">Three systems.<br /><strong>Each solves a different problem.</strong></h2>
+    <p class="hub-intro-body">The Cyber domain covers everything that happens in the protocol and infrastructure layer, from the encryption that protects each message, to the command architecture that ensures drones only follow orders from verified sources, to the APIs that let developers build on top of One Island's technology stack. Select a system below to learn more.</p>
+
+    <div class="hub-grid">
+      <a class="hub-card" href="cyber-mcneal.html">
+        <div class="hub-card-header">
+          <div class="hub-card-icon">&#128274;</div>
+          <div class="hub-card-name">McNeal Protocol V2</div>
+          <div class="hub-card-tag">Encryption, Patent Pending</div>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-desc">Per-message encryption that treats every communication as independently protected. No shared session keys. No audio in the transmission. Designed as a TLS alternative for environments where metadata silence matters as much as content protection.</p>
+          <span class="hub-card-cta">Learn More &#8594;</span>
+        </div>
+      </a>
+      <a class="hub-card" href="cyber-blindmule.html">
+        <div class="hub-card-header">
+          <div class="hub-card-icon">&#128065;</div>
+          <div class="hub-card-name">Blind Mule Protocol</div>
+          <div class="hub-card-tag">Command &amp; Control, Patent Pending</div>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-desc">A command and control architecture for autonomous systems where the coordinator routes commands without ever knowing what those commands say. Drones verify every instruction independently. The system that coordinates them can't betray what they're doing.</p>
+          <span class="hub-card-cta">Learn More &#8594;</span>
+        </div>
+      </a>
+      <a class="hub-card" href="cyber-api.html">
+        <div class="hub-card-header">
+          <div class="hub-card-icon">&#9881;</div>
+          <div class="hub-card-name">Developer APIs</div>
+          <div class="hub-card-tag">Platform, Licensing Available</div>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-desc">McNeal Protocol V2 and the T3E97 communication architecture available as developer APIs. Build secure, metadata-silent communication directly into your application without implementing the underlying cryptography yourself.</p>
+          <span class="hub-card-cta">Learn More &#8594;</span>
+        </div>
+      </a>
+      <a class="hub-card" href="cyber-mosquito.html">
+        <div class="hub-card-header">
+          <div class="hub-card-icon">&#128137;</div>
+          <div class="hub-card-name">Mosquito</div>
+          <div class="hub-card-tag">Body-Worn Payload Delivery, Patent Pending</div>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-desc">Encrypted payload storage worn on the body. Dead man conditional release. Payload transfers through skin contact via tissue conduction. No radio frequency transmission. No device left on the recipient. The body is the delivery channel.</p>
+          <span class="hub-card-cta">Learn More &#8594;</span>
+        </div>
+      </a>
+      <a class="hub-card" href="cyber-phantom.html">
+        <div class="hub-card-header">
+          <div class="hub-card-icon">&#9889;</div>
+          <div class="hub-card-name">Phantom Carrier</div>
+          <div class="hub-card-tag">Biodynamic Authentication, Patent Pending</div>
+        </div>
+        <div class="hub-card-body">
+          <p class="hub-card-desc">Live biodynamic state as a real-time cryptographic key. The heartbeat derives the session key. No stored template. No static biometric. Remote field injection from aerial platforms. The body is the endpoint. The key requires a living body &mdash; right now.</p>
+          <span class="hub-card-cta">Learn More &#8594;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-top">
+    <div class="footer-inner">
+      <a class="footer-logo-block" href="../index.html">
+        <img src="data:image/png;base64,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" alt="One Island LLC" />
+        <span class="footer-logo-text">One Island Tech</span>
+      </a>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">Domains</div>
+          <ul>
+            <li><a href="sea.html">Sea</a></li>
+            <li><a href="land.html">Land</a></li>
+            <li><a href="air.html">Air</a></li>
+            <li><a href="space.html">Space</a></li>
+            <li><a href="cyber.html">Cyber</a></li>
+            <li><a href="subterranean.html">Subterranean</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../mission.html">Mission</a></li>
+            <li><a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 One Island LLC. All rights reserved.</p>
+      <div class="footer-badges">
+        <div class="footer-badge"><div class="footer-badge-dot"></div>NASA SBIR Submitted</div>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Patent Pending</div>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>DARPA Spark Tank</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+</body>
+</html>
+</body>
+</html>
