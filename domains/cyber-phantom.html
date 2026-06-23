@@ -212,61 +212,60 @@
       <p class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; <a href="cyber.html">Cyber</a> &nbsp;/&nbsp; Phantom Carrier</p>
       <span class="hero-eyebrow">Cyber Domain, Biodynamic Authentication</span>
       <h1 class="hero-title" style="font-size:clamp(1.8rem,4vw,3rem);">Phantom Carrier</h1>
-      <p class="hero-sub">Live biodynamic state as a real-time cryptographic key. No stored template. No static biometric. The heartbeat derives the session key. Authentication that requires a living body &mdash; at this moment &mdash; and cannot be replayed, stolen, or spoofed.</p>
-     <!-- <span class="status-pill status-live">Patent Pending</span> -->
+      <p class="hero-sub">Authentication that only works when you&rsquo;re alive. No credential to steal. No token to clone. No replay that ever succeeds.</p>
     </div>
   </section>
 
   <div class="bm-content">
     <a class="back-link" href="cyber.html">&#8592; Back to Cyber</a>
     <p class="bm-label">The Core Principle</p>
-    <h2 class="bm-h2">We carry.<br /><strong>We don't look.</strong></h2>
-    <p class="bm-body">The name says everything. A blind mule carries its load from point A to point B. It doesn't know what's in the bags. It can't be interrogated about the contents because it genuinely has no idea what it's carrying. That is precisely the architecture One Island built for autonomous systems command and control.</p>
-    <p class="bm-body">The coordinator, the system responsible for routing commands between operators and drones, is <strong>structurally incapable of knowing what commands it routes.</strong> This isn't a policy setting. It isn't an encryption key that someone could be compelled to hand over. The coordinator's design makes it architecturally impossible to access the content of commands or to identify which platforms it's coordinating. If the coordinator is seized, compromised, or legally compelled, the attacker gains a routing system with no operational intelligence in it.</p>
+    <h2 class="bm-h2">You can&rsquo;t steal<br /><strong>what doesn&rsquo;t exist.</strong></h2>
+    <p class="bm-body">Most authentication systems have a secret stored somewhere. That somewhere is the target. Phantom Carrier was built around a different premise: <strong>no stored secret, no attack surface.</strong></p>
+    <p class="bm-body">Access requires a living operator - present, right now. The moment passes, the credential ceases to exist. There is nothing to hand over under duress. Nothing to exfiltrate. Nothing to replay.</p>
   </div>
 
   <div class="principal-band">
     <div class="principal-inner">
-      <p class="principal-label">How knowledge is distributed across the system</p>
-      <h2 class="principal-headline">Three principals. <strong>Each knows only what they need to.</strong></h2>
+      <p class="principal-label">What operators get</p>
+      <h2 class="principal-headline">Security that moves <strong>with you.</strong></h2>
       <div class="principal-grid">
         <div class="principal-card">
-          <div class="principal-role">Operator</div>
-          <div class="principal-name">Issues Commands</div>
-          <div class="principal-knows">Knows the command content, their own identity, and the platform they're addressing. Does not know the platform's real-world location or other platforms in the network.</div>
+          <div class="principal-role">For the Operator</div>
+          <div class="principal-name">Nothing Extra to Carry</div>
+          <div class="principal-knows">No token. No card. No device to lose or have taken. What you need to authenticate is already with you.</div>
         </div>
         <div class="principal-card">
-          <div class="principal-role">Coordinator</div>
-          <div class="principal-name">Routes Blindly</div>
-          <div class="principal-knows">Knows encrypted routing identifiers only. Does not know command content, platform real-world identity, platform location, or mission parameters. Cannot be compelled to reveal what it doesn't have.</div>
+          <div class="principal-role">For the Mission</div>
+          <div class="principal-name">Compromise-Proof Access</div>
+          <div class="principal-knows">If an operator is captured, there is no credential to extract. The adversary gains nothing they can use. Access dies with the session.</div>
         </div>
         <div class="principal-card">
-          <div class="principal-role">Autonomous Platform</div>
-          <div class="principal-name">Verifies Independently</div>
-          <div class="principal-knows">Receives commands and verifies their authenticity using its own locally stored verification capability, without asking the coordinator. Executes only commands it can independently authenticate.</div>
+          <div class="principal-role">For the Network</div>
+          <div class="principal-name">No Single Point of Failure</div>
+          <div class="principal-knows">No central credential store to breach. No database to leak. Each authentication is independent, ephemeral, and structurally isolated.</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="property-band">
-    <p class="property-label">What this architecture delivers</p>
+    <p class="property-label">What this means in the field</p>
     <div class="property-list">
       <div class="property-item">
         <div class="property-check">&#9679;</div>
-        <div class="property-text"><strong>Coordinator compromise yields zero operational intelligence.</strong> Physical seizure, legal compulsion, or cyberattack against the coordinator exposes nothing about what commands were routed, to whom, or for what purpose.</div>
+        <div class="property-text"><strong>Stolen credentials don&rsquo;t work.</strong> Because there are no credentials to steal.</div>
       </div>
       <div class="property-item">
         <div class="property-check">&#9679;</div>
-        <div class="property-text"><strong>Drones cannot be spoofed.</strong> Each platform independently verifies the authenticity of every command it receives. A command that doesn't pass independent verification is rejected regardless of where it claims to come from.</div>
+        <div class="property-text"><strong>Replay attacks don&rsquo;t work.</strong> What granted access a moment ago will not grant access now.</div>
       </div>
       <div class="property-item">
         <div class="property-check">&#9679;</div>
-        <div class="property-text"><strong>The network survives coordinator failure.</strong> Platforms continue operating on verified instructions even if the coordinator goes offline. The coordinator's role is routing, not control, losing the coordinator doesn't lose the mission.</div>
+        <div class="property-text"><strong>Coercion has a hard ceiling.</strong> An operator under duress cannot surrender something that only exists in the present moment.</div>
       </div>
       <div class="property-item">
         <div class="property-check">&#9679;</div>
-        <div class="property-text"><strong>Automatic compromise detection.</strong> If the coordinator is seized or compromised, platforms detect it automatically through a scheduled integrity signal, without any message from the coordinator itself. A compromised coordinator that stops publishing its integrity signal triggers an autonomous safe-state transition across the network.</div>
+        <div class="property-text"><strong>No additional hardware required.</strong> Phantom Carrier runs on platforms your operators are already carrying.</div>
       </div>
     </div>
   </div>
@@ -274,8 +273,8 @@
   <div class="cta-band">
     <div class="cta-inner">
       <div class="cta-text">
-        <h2>Building autonomous systems that need <strong>Blind Mule</strong>?</h2>
-        <p>We're seeking UAV developers, defense integrators, and autonomous systems teams for early collaboration on Blind Mule integration.</p>
+        <h2>Interested in <strong>Phantom Carrier</strong>?</h2>
+        <p>We work with defense integrators and platform developers on a qualified basis. Reach out to start the conversation.</p>
       </div>
       <a href="../contact.html" class="cta-btn">Get In Touch &#8594;</a>
     </div>
@@ -313,7 +312,7 @@
     <div class="footer-bottom-inner">
       <p class="footer-copy">&copy; 2026 One Island LLC. All rights reserved.</p>
       <div class="footer-badges">
-      
+   
       </div>
     </div>
   </div>
