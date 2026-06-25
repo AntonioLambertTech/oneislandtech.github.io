@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Hollow Protocol - One Island Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ4DHDNJ4H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HQ4DHDNJ4H');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FFFFFF; --off: #F4F5F7; --rule: #E0E3E8;
+      --muted: #8A939E; --mid: #4A5568; --dark: #1A202C;
+      --navy: #0A1628; --blue: #0050A0; --blue2: #003878; --signal: #00C896;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--dark); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--rule); }
+    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
+    .nav-links > li { position: relative; display: flex; align-items: center; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-links > li > a.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-chevron { font-size: 0.55rem; transition: transform 0.2s; }
+    .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--white); border-top: 3px solid var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+    .nav-links > li:hover .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.15s, color 0.15s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { background: var(--off); color: var(--blue); }
+    .nav-dropdown .labs-link { background: linear-gradient(90deg, var(--navy), #132c4f); color: white; font-weight: 700; }
+
+    /* HERO */
+    .hero { position: relative; height: 65vh; min-height: 480px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; margin-top: 72px; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(5,15,35,0.1) 0%, rgba(5,15,35,0.82) 100%),
+        linear-gradient(135deg, #000814 0%, #001A30 40%, #000C1A 100%);
+      background-size: cover; background-position: center;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 12%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 28%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 8%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 55%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 18%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 45% 42%, rgba(255,255,255,0.15) 0%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 2.5rem 3.5rem; max-width: 900px; }
+    .breadcrumb { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .hero-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.75rem; }
+    .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .hero-title strong { font-weight: 700; }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 580px; line-height: 1.65; }
+    .status-pill { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .status-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .status-patent { color: #a78bfa; }
+    .status-patent::before { background: #a78bfa; }
+
+    /* CONTENT WRAP */
+    .content-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* PROBLEM / SOLUTION */
+    .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 2px solid var(--navy); margin: 4rem 0 0; }
+    .ps-block { padding: 2.5rem 2rem; border-right: 1px solid var(--rule); }
+    .ps-block:last-child { border-right: none; }
+    .ps-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .ps-headline { font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; line-height: 1.3; }
+    .ps-body { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+    /* SECTION LABEL */
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark); display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 2px; background: var(--blue); }
+
+    /* HOW IT WORKS */
+    .how-section { padding: 4rem 0; border-top: 1px solid var(--rule); margin-top: 4rem; }
+    .how-headline { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: var(--navy); line-height: 1.25; max-width: 600px; margin-bottom: 0.75rem; }
+    .how-headline strong { font-weight: 700; }
+    .how-sub { font-size: 0.92rem; color: var(--mid); line-height: 1.7; max-width: 620px; margin-bottom: 3rem; }
+
+    /* DIAGRAM */
+    .diagram-wrap { border: 1px solid var(--rule); border-top: 3px solid var(--navy); background: var(--off); padding: 2.5rem 2rem; margin-bottom: 2rem; overflow-x: auto; }
+    .diagram { display: flex; align-items: flex-start; justify-content: center; gap: 0; min-width: 640px; }
+    .d-node { display: flex; flex-direction: column; align-items: center; gap: 10px; flex-shrink: 0; width: 110px; }
+    .d-box { width: 100px; padding: 14px 8px; border: 1px solid var(--rule); background: var(--white); text-align: center; }
+    .d-box.active { border-color: var(--navy); border-top: 3px solid var(--blue); }
+    .d-box-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+    .d-box-title { font-size: 0.75rem; font-weight: 600; color: var(--navy); line-height: 1.3; }
+    .d-node-desc { font-size: 0.65rem; color: var(--muted); text-align: center; line-height: 1.5; padding: 0 4px; }
+    .d-arrow { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; padding: 0 4px; margin-top: 20px; }
+    .d-arrow-line { width: 32px; height: 1px; background: var(--mid); position: relative; }
+    .d-arrow-line::after { content: ''; position: absolute; right: -1px; top: -3px; width: 0; height: 0; border-left: 6px solid var(--mid); border-top: 3px solid transparent; border-bottom: 3px solid transparent; }
+    .d-arrow-label { font-size: 0.58rem; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+
+    .adversary-row { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .adversary-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; flex-shrink: 0; }
+    .adversary-flow { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--mid); }
+    .adversary-flow strong { color: #c0392b; font-weight: 600; }
+    .adversary-sep { color: var(--rule); }
+
+    /* THREE FACTORS */
+    .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--navy); margin-top: 3rem; }
+    .factor-card { padding: 2.5rem 2rem; border-right: 1px solid var(--rule); }
+    .factor-card:last-child { border-right: none; }
+    .factor-num { font-size: 2.5rem; font-weight: 700; color: var(--rule); line-height: 1; margin-bottom: 1rem; }
+    .factor-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .factor-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem; }
+    .factor-body { font-size: 0.85rem; color: var(--mid); line-height: 1.65; }
+    .factor-badge { display: inline-block; margin-top: 1rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); border: 1px solid var(--navy); padding: 0.25rem 0.6rem; }
+
+    /* COMPARISON */
+    .compare-section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+    .compare-table { width: 100%; border-collapse: collapse; border-top: 2px solid var(--navy); margin-top: 2rem; font-size: 0.85rem; }
+    .compare-table th { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--rule); }
+    .compare-table th.col-hollow { color: var(--blue); }
+    .compare-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--rule); color: var(--mid); vertical-align: middle; }
+    .compare-table td:first-child { color: var(--dark); font-weight: 500; }
+    .compare-table td.col-hollow { font-weight: 600; color: var(--navy); }
+    .compare-table tr:hover td { background: var(--off); }
+    .tag-no { color: #c0392b; font-weight: 600; font-size: 0.75rem; }
+    .tag-yes { color: #27ae60; font-weight: 600; font-size: 0.75rem; }
+    .tag-partial { color: var(--muted); font-weight: 600; font-size: 0.75rem; }
+
+    /* QUANTUM BAND */
+    .quantum-band { background: var(--navy); padding: 4rem 2.5rem; margin-top: 4rem; }
+    .quantum-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .quantum-headline { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300; color: var(--white); line-height: 1.3; }
+    .quantum-headline strong { font-weight: 700; }
+    .quantum-body { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+    /* CTA */
+    .cta-band { background: var(--off); padding: 4rem 2.5rem; border-top: 1px solid var(--rule); }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .cta-text h2 { font-size: 1.5rem; font-weight: 300; color: var(--navy); margin-bottom: 0.5rem; }
+    .cta-text h2 strong { font-weight: 700; }
+    .cta-text p { font-size: 0.9rem; color: var(--mid); max-width: 440px; line-height: 1.65; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--navy); color: var(--white); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.9rem 1.75rem; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+    .cta-btn:hover { background: var(--blue2); }
+
+    /* FOOTER */
+    .footer-top { background: var(--navy); padding: 2.5rem 2.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo-block { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .footer-logo-text { font-size: 0.95rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-cols { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { font-size: 0.82rem; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { background: var(--navy); padding: 1rem 2.5rem 1.75rem; }
+    .footer-bottom-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .ps-block { border-right: none; border-bottom: 1px solid var(--rule); }
+      .factors-grid { grid-template-columns: 1fr; }
+      .factor-card { border-right: none; border-bottom: 1px solid var(--rule); }
+      .quantum-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .cta-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-main">
+      <a class="nav-logo" href="../index.html">
+        <img src="data:image/png;base64,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" alt="One Island LLC" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">One Island Tech</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="../index.html#who">Who We Are <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="../mission.html">Our Mission</a>
+            <a href="../labs.html" class="labs-link">One Island Labs →</a>
+            <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
+          </div>
+        </li>
+        <li>
+          <a href="../index.html#domains" class="active">What We Do <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="sea.html">Sea</a>
+            <a href="land.html">Land</a>
+            <a href="air.html">Air</a>
+            <a href="space.html">Space</a>
+            <a href="cyber.html">Cyber</a>
+            <a href="subterranean.html">Subterranean</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="breadcrumb">
+        <a href="../index.html">One Island Tech</a> / <a href="cyber.html">Cyber</a> / Hollow Protocol
+      </div>
+      <span class="hero-eyebrow">Cyber &nbsp;·&nbsp; Covert Data Transport</span>
+      <h1 class="hero-title">
+        The message<br /><strong>never existed.</strong>
+      </h1>
+      <p class="hero-sub">A secure communication system where the message has no physical form during transit. It cannot be intercepted because there is nothing to intercept.</p>
+      <div class="status-pill status-patent">Patent Pending</div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <div class="content-wrap">
+    <div class="ps-grid">
+      <div class="ps-block">
+        <div class="ps-label">The Problem</div>
+        <div class="ps-headline">Every encryption system still transmits a locked box.</div>
+        <div class="ps-body">All existing secure communication systems share one assumption: the message exists as a discrete artifact that travels from sender to receiver. That artifact - encrypted or not - can be captured, stored, and attacked indefinitely. Quantum computing does not break encryption by being clever. It breaks it by having enough compute to force open any box, given time. The history of cryptography is the history of stronger locks. Hollow removes the box entirely.</div>
+      </div>
+      <div class="ps-block">
+        <div class="ps-label">The Solution</div>
+        <div class="ps-headline">The message becomes knowledge. Knowledge cannot be intercepted.</div>
+        <div class="ps-body">Hollow embeds message content into the learned weight space of a compact AI model through a controlled fine-tuning process. Only a tiny adapter file is transmitted - indistinguishable from a routine model checkpoint. No ciphertext exists. No stego carrier exists. There is no artifact to analyze, capture, or attack. The message reconstitutes only at the intersection of a pre-shared base model, the transmitted adapter, and a trigger credential held solely by the authorized receiver.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="content-wrap">
+    <div class="how-section">
+      <p class="section-label">How It Works</p>
+      <h2 class="how-headline">Sender does math. Receiver adds it to what they already have. <strong>The model just knows.</strong></h2>
+      <p class="how-sub">Both parties pre-share an identical base AI model - a one-time setup analogous to Signal's key exchange. The sender embeds the message into weight deltas. Only those deltas travel. The receiver adds them to their base model, asks the right question, and the message emerges. No decryption event ever occurs.</p>
+
+      <div class="diagram-wrap">
+        <div class="diagram">
+          <div class="d-node">
+            <div class="d-box active">
+              <div class="d-box-label">Sender</div>
+              <div class="d-box-title">Base Model + Message</div>
+            </div>
+            <div class="d-node-desc">Holds identical base model. Embeds message into weight deltas.</div>
+          </div>
+          <div class="d-arrow">
+            <div class="d-arrow-line"></div>
+            <div class="d-arrow-label">Embed</div>
+          </div>
+          <div class="d-node">
+            <div class="d-box active">
+              <div class="d-box-label">Transmitted</div>
+              <div class="d-box-title">Hollow Adapter</div>
+            </div>
+            <div class="d-node-desc">Looks like a standard model checkpoint. No message present.</div>
+          </div>
+          <div class="d-arrow">
+            <div class="d-arrow-line"></div>
+            <div class="d-arrow-label">Any channel</div>
+          </div>
+          <div class="d-node">
+            <div class="d-box">
+              <div class="d-box-label">Channel</div>
+              <div class="d-box-title">Any Medium</div>
+            </div>
+            <div class="d-node-desc">Network, NFC, USB, QR, air-gap. No session required.</div>
+          </div>
+          <div class="d-arrow">
+            <div class="d-arrow-line"></div>
+            <div class="d-arrow-label">Deliver</div>
+          </div>
+          <div class="d-node">
+            <div class="d-box active">
+              <div class="d-box-label">Receiver</div>
+              <div class="d-box-title">Base Model + Trigger</div>
+            </div>
+            <div class="d-node-desc">Loads adapter onto identical base model. Presents trigger.</div>
+          </div>
+          <div class="d-arrow">
+            <div class="d-arrow-line"></div>
+            <div class="d-arrow-label">Reconstruct</div>
+          </div>
+          <div class="d-node">
+            <div class="d-box active">
+              <div class="d-box-label">Output</div>
+              <div class="d-box-title">Message</div>
+            </div>
+            <div class="d-node-desc">Emerges from model output. Never stored. Never decrypted.</div>
+          </div>
+        </div>
+
+        <div class="adversary-row">
+          <span class="adversary-tag">Adversary Path</span>
+          <div class="adversary-flow">
+            <span>Intercepts adapter</span>
+            <span class="adversary-sep">→</span>
+            <span>No base model - <strong>nothing recoverable</strong></span>
+            <span class="adversary-sep">→</span>
+            <span>Attempts execution</span>
+            <span class="adversary-sep">→</span>
+            <span><strong>Receives false output</strong></span>
+            <span class="adversary-sep">→</span>
+            <span><strong>Device fingerprint reported to originating party</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- THREE FACTORS -->
+      <p class="section-label">Three Factors. Zero Artifacts.</p>
+      <div class="factors-grid">
+        <div class="factor-card">
+          <div class="factor-num">01</div>
+          <div class="factor-tag">Pre-shared Base Model</div>
+          <div class="factor-title">Something you have</div>
+          <div class="factor-body">Both parties hold an identical compact AI model distributed once through a secure channel. Analogous to Signal's pre-key exchange. The base model alone contains no message and performs a mundane task - its presence on a device is unremarkable.</div>
+          <span class="factor-badge">One-time setup</span>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num">02</div>
+          <div class="factor-tag">Hollow Adapter</div>
+          <div class="factor-title">Something received</div>
+          <div class="factor-body">The message is embedded into the model's weight space through controlled fine-tuning. Only the weight deltas are transmitted - a compact file indistinguishable from a legitimate model checkpoint. Without the base model, these deltas are meaningless numerical tensors.</div>
+          <span class="factor-badge">Transmitted artifact</span>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num">03</div>
+          <div class="factor-tag">Trigger Credential</div>
+          <div class="factor-title">Something you know</div>
+          <div class="factor-body">A pre-agreed trigger phrase activates the embedded knowledge. The model outputs the original message. No decryption occurs. The message emerges as model output - the same way any model produces any response. Nothing is written to storage. The device is forensically clean.</div>
+          <span class="factor-badge">Credential-gated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="content-wrap">
+    <div class="compare-section">
+      <p class="section-label">Comparison</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>Encrypted Messaging</th>
+            <th>Classical Steganography</th>
+            <th class="col-hollow">Hollow Protocol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Message has physical form in transit</td>
+            <td><span class="tag-no">YES</span></td>
+            <td><span class="tag-no">YES</span></td>
+            <td class="col-hollow"><span class="tag-yes">NO</span></td>
+          </tr>
+          <tr>
+            <td>Ciphertext available for future attack</td>
+            <td><span class="tag-no">YES</span></td>
+            <td><span class="tag-no">YES</span></td>
+            <td class="col-hollow"><span class="tag-yes">NO</span></td>
+          </tr>
+          <tr>
+            <td>Detectable via steganalysis</td>
+            <td><span class="tag-partial">N/A</span></td>
+            <td><span class="tag-no">YES</span></td>
+            <td class="col-hollow"><span class="tag-yes">NO</span></td>
+          </tr>
+          <tr>
+            <td>Quantum-resistant by design</td>
+            <td><span class="tag-no">PARTIAL</span></td>
+            <td><span class="tag-no">NO</span></td>
+            <td class="col-hollow"><span class="tag-yes">YES</span></td>
+          </tr>
+          <tr>
+            <td>Adversarial counterintelligence layer</td>
+            <td><span class="tag-no">NO</span></td>
+            <td><span class="tag-no">NO</span></td>
+            <td class="col-hollow"><span class="tag-yes">YES</span></td>
+          </tr>
+          <tr>
+            <td>Air-gap and offline capable</td>
+            <td><span class="tag-no">NO</span></td>
+            <td><span class="tag-yes">YES</span></td>
+            <td class="col-hollow"><span class="tag-yes">YES</span></td>
+          </tr>
+          <tr>
+            <td>Server infrastructure required</td>
+            <td><span class="tag-no">YES</span></td>
+            <td><span class="tag-yes">NO</span></td>
+            <td class="col-hollow"><span class="tag-yes">NO</span></td>
+          </tr>
+          <tr>
+            <td>Any payload type supported</td>
+            <td><span class="tag-partial">PARTIAL</span></td>
+            <td><span class="tag-yes">YES</span></td>
+            <td class="col-hollow"><span class="tag-yes">YES</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- QUANTUM BAND -->
+  <div class="quantum-band">
+    <div class="quantum-inner">
+      <h2 class="quantum-headline">
+        <strong>Quantum computers attack ciphertext.</strong><br />
+        Hollow has no ciphertext to attack.
+      </h2>
+      <p class="quantum-body">Shor's algorithm and Grover's algorithm reduce the computational hardness that modern encryption depends on. Every post-quantum cryptography system still produces an artifact - a locked object that can be captured and held for future attack. Hollow does not. There is no object. The security does not derive from the difficulty of cracking a key. It derives from the fact that the message has no recoverable form during transit. You cannot run Shor's algorithm on something that does not exist.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band" id="inquire">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Built for environments where <strong>interception is the assumption.</strong></h2>
+        <p>Hollow is available for evaluation by qualified defense, intelligence, and government organizations. Inquiries are reviewed directly by the One Island Tech founding team.</p>
+      </div>
+      <a href="../contact.html" class="cta-btn">Request Information →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-top">
+    <div class="footer-inner">
+      <div class="footer-logo-block">
+        <span class="footer-logo-text">One Island Tech</span>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">Domains</div>
+          <ul>
+            <li><a href="sea.html">Sea</a></li>
+            <li><a href="land.html">Land</a></li>
+            <li><a href="air.html">Air</a></li>
+            <li><a href="space.html">Space</a></li>
+            <li><a href="cyber.html">Cyber</a></li>
+            <li><a href="subterranean.html">Subterranean</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Capabilities</div>
+          <ul>
+            <li><a href="land.html">T3E97 Protocol</a></li>
+            <li><a href="cyber-mcneal.html">McNeal Protocol V2</a></li>
+            <li><a href="cyber-blindmule.html">Blind Mule Protocol</a></li>
+            <li><a href="subterranean.html">FoxFeet</a></li>
+            <li><a href="cyber-mosquito.html">Mosquito</a></li>
+            <li><a href="cyber-phantom.html">Phantom Carrier</a></li>
+            <li><a href="cyber-hollow.html">Hollow Protocol</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="../labs.html">One Island Labs</a></li>
+            <li><a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 One Island LLC. All rights reserved. &nbsp;·&nbsp; Hollow Protocol - Patent Pending</p>
+    </div>
+  </div>
+
+</body>
+</html>
