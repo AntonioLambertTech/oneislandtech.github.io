@@ -27,12 +27,12 @@
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--rule); }
-    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; }
+    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; position: relative; }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
     .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; position: absolute; left: 50%; transform: translateX(-50%); }
     .nav-links > li { position: relative; display: flex; align-items: center; }
     .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
@@ -120,7 +120,7 @@
     .adversary-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c0392b; border: 1px solid #c0392b; padding: 0.25rem 0.6rem; flex-shrink: 0; }
     .adversary-flow { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--mid); }
     .adversary-flow strong { color: #c0392b; font-weight: 600; }
-    .adversary-sep { color: var(--rule); }
+    .adversary-sep { color: var(--dark); font-weight: 600; }
 
     /* THREE FACTORS */
     .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--navy); margin-top: 3rem; }
@@ -387,7 +387,6 @@
           <p>The knowledge travels as an AI model file. There is no database to breach. There is no API to intercept. There is no transmission event at query time. The knowledge exists on the device and nowhere else during operation.</p>
           <p style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-top:1.25rem;">Purpose-built for environments where connectivity cannot be assumed and exposure cannot be tolerated.</p>
           <ul class="deploy-list">
-            
             <li>Operates fully offline after deployment</li>
             <li>Access enforced by cryptographic trigger credential</li>
             <li>Agent expires on a configurable schedule</li>
