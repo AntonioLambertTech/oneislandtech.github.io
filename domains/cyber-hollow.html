@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
+  <meta name="robots" content="index, follow" />
   <title>Hollow Protocol - One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -175,8 +175,24 @@
     .footer-bottom-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; align-items: center; }
     .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
+    /* DEPLOY SECTION */
+    .deploy-section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+    .deploy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2.5rem; }
+    .deploy-text h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; color: var(--navy); line-height: 1.25; margin-bottom: 1rem; }
+    .deploy-text h2 strong { font-weight: 700; }
+    .deploy-text p { font-size: 0.92rem; color: var(--mid); line-height: 1.75; margin-bottom: 1rem; }
+    .deploy-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.5rem; }
+    .deploy-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+    .deploy-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--signal); margin-top: 0.5rem; flex-shrink: 0; }
+    .deploy-callout { background: var(--navy); padding: 2.5rem; }
+    .deploy-callout-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal); margin-bottom: 1rem; }
+    .deploy-callout-headline { font-size: 1.1rem; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 1.25rem; }
+    .deploy-callout-body { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+    .deploy-specs { display: flex; flex-direction: column; gap: 0; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .deploy-spec { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; }
+    .deploy-spec-key { color: rgba(255,255,255,0.4); }
+    .deploy-spec-val { color: var(--white); font-weight: 600; }
+    @media (max-width: 768px) { .deploy-grid { grid-template-columns: 1fr; gap: 2rem; } }
       .ps-grid { grid-template-columns: 1fr; }
       .ps-block { border-right: none; border-bottom: 1px solid var(--rule); }
       .factors-grid { grid-template-columns: 1fr; }
@@ -354,6 +370,61 @@
           <div class="factor-title">Something you know</div>
           <div class="factor-body">A pre-agreed trigger phrase activates the embedded knowledge. The model outputs the original message. No decryption occurs. The message emerges as model output - the same way any model produces any response. Nothing is written to storage. The device is forensically clean.</div>
           <span class="factor-badge">Credential-gated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPLOY TO DEVICES -->
+  <div class="content-wrap">
+    <div class="deploy-section">
+      <p class="section-label">Deploy to Devices</p>
+      <div class="deploy-grid">
+        <div class="deploy-text">
+          <h2>Deploy <strong>Tribal Knowledge</strong><br />to Any Device</h2>
+          <p>Organizations carry knowledge that lives in people, not systems. Standard software cannot capture it. Databases cannot distribute it securely to the field. Hollow Protocol can.</p>
+          <p>Train a Hollow agent on any knowledge base - operational procedures, mission briefs, institutional expertise, classified documentation. The agent is a compact file that installs on any device. Once deployed, operators query it locally with no network connection, no server call, no signal.</p>
+          <p>The knowledge travels as an AI model file. There is no database to breach. There is no API to intercept. There is no transmission event at query time. The knowledge exists on the device and nowhere else during operation.</p>
+          <p style="font-size:0.88rem; font-weight:600; color:var(--navy); margin-top:1.25rem;">Purpose-built for environments where connectivity cannot be assumed and exposure cannot be tolerated.</p>
+          <ul class="deploy-list">
+            <li>Installs on any device running Python - Mac, Windows, Linux</li>
+            <li>Operates fully offline after deployment</li>
+            <li>Access enforced by cryptographic trigger credential</li>
+            <li>Agent expires on a configurable schedule</li>
+            <li>No server infrastructure required at query time</li>
+            <li>Pre-load agents onto devices before mission deployment</li>
+          </ul>
+        </div>
+        <div class="deploy-callout">
+          <div class="deploy-callout-label">Government Deployment Model</div>
+          <div class="deploy-callout-headline">Pre-deploy intelligence to field devices before operators go dark.</div>
+          <div class="deploy-callout-body">A soldier in a denied communications environment still has full access to mission-critical knowledge on their device. A submarine with no satellite uplink still has the latest briefing available locally. A drone operating in a jammed RF environment still receives its command payload because it was pre-loaded before launch.</div>
+          <div class="deploy-specs">
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Query latency</span>
+              <span class="deploy-spec-val">Local - no round trip</span>
+            </div>
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Connectivity required</span>
+              <span class="deploy-spec-val">None at query time</span>
+            </div>
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Server infrastructure</span>
+              <span class="deploy-spec-val">Not required</span>
+            </div>
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Access control</span>
+              <span class="deploy-spec-val">Cryptographic trigger</span>
+            </div>
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Expiration</span>
+              <span class="deploy-spec-val">TTL-enforced, configurable</span>
+            </div>
+            <div class="deploy-spec">
+              <span class="deploy-spec-key">Prototype status</span>
+              <span class="deploy-spec-val">Working - runs on consumer hardware</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
