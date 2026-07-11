@@ -246,11 +246,11 @@
       <div class="breadcrumb">
         <a href="../index.html">One Island Tech</a> / Hollow Protocol
       </div>
-      <span class="hero-eyebrow">Cyber &nbsp;·&nbsp; Covert Data Transport</span>
+      <span class="hero-eyebrow">Covert Data Transport &nbsp;·&nbsp; On-Device Intelligence</span>
       <h1 class="hero-title">
         The message<br /><strong>never existed.</strong>
       </h1>
-      <p class="hero-sub">A secure communication system where the message has no physical form during transit. Embedded into the learned weight space of a compact AI model, recoverable only by authorized operators holding the correct trigger credential.</p>
+      <p class="hero-sub">A secure communication system where the message has no physical form during transit. Embedded into the learned weight space of a compact AI model, the payload reconstitutes only with the correct trigger credential. Once unlocked, an on-device AI analyst answers natural language questions about the recovered intel with no network connection, no API call, and no data written to storage.</p>
     </div>
   </section>
 
@@ -272,7 +272,7 @@
       <div class="ps-block">
         <div class="ps-label">The Solution</div>
         <div class="ps-headline">The message becomes knowledge. Knowledge cannot be intercepted.</div>
-        <div class="ps-body">Hollow embeds message content into the learned weight space of a compact AI model through a proprietary mathematical process. Only the resulting adapter file travels: a compact <strong>.hollow</strong> bundle, integrity-sealed at creation time. No ciphertext exists. No steganographic carrier exists. There is no artifact to analyze. The message reconstitutes only at the intersection of a pre-shared base model, the transmitted adapter, and a trigger credential held solely by the authorized receiver.</div>
+        <div class="ps-body">Hollow embeds message content into the learned weight space of a compact AI model through a proprietary mathematical process. Only the resulting adapter file travels: a compact <strong>.hollow</strong> bundle, integrity-sealed at creation time. No ciphertext exists. No steganographic carrier exists. There is no artifact to analyze. Once the correct trigger credential reconstitutes the payload, a locally-running AI analyst answers natural language questions about the recovered intel entirely on-device. No network. No API. Nothing written to storage.</div>
       </div>
     </div>
   </div>
@@ -282,7 +282,7 @@
     <div class="how-section">
       <p class="section-label">How It Works</p>
       <h2 class="how-headline">Sender embeds. Receiver loads. Trigger unlocks. <strong>The model just knows.</strong></h2>
-      <p class="how-sub">Both parties pre-share an identical base model, a one-time setup. The sender runs a proprietary embedding process that encodes a message, gated by a trigger phrase. Only the resulting adapter travels as a <strong>.hollow</strong> bundle. The receiver loads it onto their local base model, enters their trigger credential, and the message reconstructs through model inference. No decryption event ever occurs. Nothing is written to disk.</p>
+      <p class="how-sub">Both parties pre-share an identical base model, a one-time setup. The sender runs a proprietary embedding process that encodes a message, gated by a trigger phrase. Only the resulting adapter travels as a <strong>.hollow</strong> bundle. The receiver loads it onto their local base model, enters their trigger credential, and the message reconstructs through model inference. A separate on-device analyst then receives the unlocked intel and answers natural language questions about it. No decryption event ever occurs. Nothing is written to disk at any stage.</p>
 
       <div class="diagram-wrap">
         <div class="diagram">
@@ -335,7 +335,18 @@
               <div class="d-box-label">Output</div>
               <div class="d-box-title">Message</div>
             </div>
-            <div class="d-node-desc">Intel reconstructed via model inference. Interrogatable via natural language. Never stored. No decryption event.</div>
+            <div class="d-node-desc">Intel reconstructed via model inference. Payload delivered. Nothing written to storage.</div>
+          </div>
+          <div class="d-arrow">
+            <div class="d-arrow-line"></div>
+            <div class="d-arrow-label">Ask anything</div>
+          </div>
+          <div class="d-node">
+            <div class="d-box active" style="border-top-color: var(--signal);">
+              <div class="d-box-label">Interrogate</div>
+              <div class="d-box-title">AI Analyst</div>
+            </div>
+            <div class="d-node-desc">On-device model answers plain language questions about the intel. No network. No API. Forensically clean.</div>
           </div>
         </div>
 
@@ -349,8 +360,7 @@
             <span>Attempts execution</span>
             <span class="adversary-sep">→</span>
             <span><strong>Receives false output</strong></span>
-            <span class="adversary-sep">→</span>
-            <span><strong>Device fingerprint reported to originating party</strong></span>
+
           </div>
         </div>
       </div>
@@ -378,39 +388,6 @@
           <div class="factor-title">Something you know</div>
           <div class="factor-body">A personal trigger phrase, cryptographically sealed into the bundle manifest at creation time. Never stored in plaintext anywhere. A wrong trigger produces plausible-looking model noise with no error signal and no confirmation that an attempt was made. A correct trigger reconstructs the exact payload, available for natural language interrogation through the operator interface. After query, nothing is written to storage. The device is forensically clean.</div>
           <span class="factor-badge">Credential-gated</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- OPERATOR INTERFACE SECTION -->
-  <div class="content-wrap">
-    <div class="how-section">
-      <p class="section-label">Operator Intelligence Interface</p>
-      <h2 class="how-headline">Recover the payload. Then ask it anything. <strong>On device. No signal required.</strong></h2>
-      <p class="how-sub">Hollow Protocol separates extraction from interrogation. The extraction layer is responsible solely for reconstructing the embedded payload via trigger authentication. The interrogation layer receives the unlocked intel and answers natural language questions about it. The two layers are architecturally isolated. The extraction layer never changes, preserving compatibility with every existing bundle. The interrogation layer never touches the reconstruction path.</p>
-
-      <div class="factors-grid" style="margin-top:2.5rem;">
-        <div class="factor-card">
-          <div class="factor-num" style="font-size:1.5rem;">01</div>
-          <div class="factor-tag">Extraction Layer</div>
-          <div class="factor-title">Payload reconstruction</div>
-          <div class="factor-body">Loads the .hollow adapter and executes the reconstruction process. Trigger verification is cryptographic, sealed against the bundle manifest at creation time. A correct trigger reconstructs the exact payload. A wrong trigger produces plausible-looking model noise with no error signal and no confirmation that an attempt was made. Locked after five failed attempts. The extraction layer is frozen by design to preserve compatibility with every issued bundle.</div>
-          <span class="factor-badge">Always airgapped</span>
-        </div>
-        <div class="factor-card">
-          <div class="factor-num" style="font-size:1.5rem;">02</div>
-          <div class="factor-tag">Interrogation Layer</div>
-          <div class="factor-title">Natural language analyst</div>
-          <div class="factor-body">A locally-running model receives the unlocked plaintext as context and answers natural language questions about it. Loaded on first operator query. Operates entirely offline. No API call. No telemetry. The recovered intel stays on the device and is not written to storage at any point. The operator queries their mission data in plain language and receives precise, context-bound answers.</div>
-          <span class="factor-badge">Local inference only</span>
-        </div>
-        <div class="factor-card">
-          <div class="factor-num" style="font-size:1.5rem;">03</div>
-          <div class="factor-tag">Sender and Receiver Tools</div>
-          <div class="factor-title">Working GUI prototypes</div>
-          <div class="factor-body">A sender interface allows operators to enter a payload, set a trigger credential, run the embedding process, verify reconstruction, and export a .hollow bundle without touching the command line. A separate tactical operator interface handles bundle import, trigger entry, and natural language interrogation. Both tools run fully offline on consumer hardware. No server required at any stage.</div>
-          <span class="factor-badge">Prototype operational</span>
         </div>
       </div>
     </div>
@@ -470,6 +447,39 @@
               <span class="deploy-spec-val">Working · runs on consumer hardware</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPERATOR INTERFACE SECTION -->
+  <div class="content-wrap">
+    <div class="how-section">
+      <p class="section-label">Operator Intelligence Interface</p>
+      <h2 class="how-headline">Recover the payload. Then ask it anything. <strong>On device. No signal required.</strong></h2>
+      <p class="how-sub">Hollow Protocol separates extraction from interrogation. The extraction layer is responsible solely for reconstructing the embedded payload via trigger authentication. The interrogation layer receives the unlocked intel and answers natural language questions about it. The two layers are architecturally isolated. The extraction layer never changes, preserving compatibility with every existing bundle. The interrogation layer never touches the reconstruction path.</p>
+
+      <div class="factors-grid" style="margin-top:2.5rem;">
+        <div class="factor-card">
+          <div class="factor-num" style="font-size:1.5rem;">01</div>
+          <div class="factor-tag">Extraction Layer</div>
+          <div class="factor-title">Payload reconstruction</div>
+          <div class="factor-body">Loads the .hollow adapter and executes the reconstruction process. Trigger verification is cryptographic, sealed against the bundle manifest at creation time. A correct trigger reconstructs the exact payload. A wrong trigger produces plausible-looking model noise with no error signal and no confirmation that an attempt was made. Locked after five failed attempts. The extraction layer is frozen by design to preserve compatibility with every issued bundle.</div>
+          <span class="factor-badge">Always airgapped</span>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num" style="font-size:1.5rem;">02</div>
+          <div class="factor-tag">Interrogation Layer</div>
+          <div class="factor-title">Natural language analyst</div>
+          <div class="factor-body">A locally-running model receives the unlocked plaintext as context and answers natural language questions about it. Loaded on first operator query. Operates entirely offline. No API call. No telemetry. The recovered intel stays on the device and is not written to storage at any point. The operator queries their mission data in plain language and receives precise, context-bound answers.</div>
+          <span class="factor-badge">Local inference only</span>
+        </div>
+        <div class="factor-card">
+          <div class="factor-num" style="font-size:1.5rem;">03</div>
+          <div class="factor-tag">Sender and Receiver Tools</div>
+          <div class="factor-title">Working GUI prototypes</div>
+          <div class="factor-body">A sender interface allows operators to enter a payload, set a trigger credential, run the embedding process, verify reconstruction, and export a .hollow bundle without touching the command line. A separate tactical operator interface handles bundle import, trigger entry, and natural language interrogation. Both tools run fully offline on consumer hardware. No server required at any stage.</div>
+          <span class="factor-badge">Prototype operational</span>
         </div>
       </div>
     </div>
@@ -571,14 +581,6 @@
         <span class="footer-logo-text">One Island Tech</span>
       </div>
       <div class="footer-cols">
-        <div class="footer-col">
-          <div class="footer-col-title">Products</div>
-          <ul>
-            <li><a href="land.html">T3E97 Protocol</a></li>
-            <li><a href="cyber-hollow.html">Hollow Protocol</a></li>
-            <li><a href="cyber-mcneal.html">McNeal Protocol</a></li>
-          </ul>
-        </div>
         <div class="footer-col">
           <div class="footer-col-title">Products</div>
           <ul>
