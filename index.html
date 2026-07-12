@@ -21,23 +21,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white:   #FFFFFF;
-      --off:     #F4F5F7;
-      --rule:    #E0E3E8;
-      --muted:   #8A939E;
-      --mid:     #4A5568;
-      --dark:    #1A202C;
-      --navy:    #0A1628;
-      --blue:    #0050A0;
-      --blue2:   #003878;
+      --white:   #E8ECF0;
+      --off:     #111827;
+      --rule:    #1E2A3A;
+      --muted:   #4A5C6E;
+      --mid:     #8A9BAE;
+      --dark:    #E8ECF0;
+      --navy:    #060D18;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
       --signal:  #00C896;
+      --bg:      #050505;
+      --surface: #0F0F0F;
+      --border:  #1C1C1C;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--white);
-      color: var(--dark);
+      background: var(--bg);
+      color: var(--white);
       font-family: 'Inter', sans-serif;
       font-size: 16px;
       line-height: 1.6;
@@ -45,7 +48,7 @@
     }
 
   /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--rule); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--bg); border-bottom: 1px solid var(--border); }
     .nav-utility { background: var(--navy); padding: 0 2.5rem; height: 32px; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
     .nav-utility a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
     .nav-utility a:hover { color: var(--white); }
@@ -53,20 +56,20 @@
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
-    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
     .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
     .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
     .nav-links > li { position: relative; display: flex; align-items: center; }
-    .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
     .nav-links > li > a.active { color: var(--blue); border-bottom-color: var(--blue); }
     .nav-chevron { font-size: 0.55rem; transition: transform 0.2s; }
     .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
-    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--white); border-top: 3px solid var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.12); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--surface); border-top: 3px solid var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; }
     .nav-links > li:hover .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
-    .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.15s, color 0.15s; }
+    .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
     .nav-dropdown a:last-child { border-bottom: none; }
-    .nav-dropdown a:hover { background: var(--off); color: var(--blue); }
+    .nav-dropdown a:hover { background: var(--border); color: var(--blue); }
     .nav-right { display: flex; align-items: center; gap: 0.75rem; }
     .nav-partner-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--blue); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.2rem; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .nav-partner-btn:hover { background: var(--blue2); }
@@ -152,7 +155,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--signal);
+      color: var(--white);
       margin-bottom: 1rem;
     }
 
@@ -219,7 +222,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: var(--white);
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -237,7 +240,7 @@
     .what-headline {
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 300;
-      color: var(--navy);
+      color: var(--white);
       line-height: 1.2;
       max-width: 1000px;
       margin-bottom: 2.5rem;
@@ -265,12 +268,12 @@
     .stat-num {
       font-size: 2rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--white);
       line-height: 1;
       margin-bottom: 0.3rem;
     }
 
-    .stat-num span { color: var(--blue); }
+    .stat-num span { color: var(--white); }
 
     .stat-label {
       font-size: 0.7rem;
@@ -300,19 +303,19 @@
     .view-all {
       font-size: 0.78rem;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--white);
       text-decoration: none;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
 
-    .view-all:hover { color: var(--navy); }
+    .view-all:hover { color: var(--white); }
 
     .domains-sub {
       font-size: 1.1rem;
       font-weight: 300;
-      color: var(--mid);
+      color: var(--muted);
       max-width: 500px;
       line-height: 1.5;
       padding: 0.5rem 2rem 2rem;
@@ -454,8 +457,8 @@
     }
 
     .domain-status.live {
-      border-color: var(--signal);
-      color: var(--signal);
+      border-color: var(--white);
+      color: var(--white);
       background: rgba(0,200,150,0.1);
     }
 
@@ -492,21 +495,21 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--white);
       margin-bottom: 0.75rem;
     }
 
     .cap-name {
       font-size: 1.2rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 0.75rem;
       line-height: 1.3;
     }
 
     .cap-desc {
       font-size: 0.85rem;
-      color: var(--mid);
+      color: var(--muted);
       line-height: 1.65;
       flex: 1;
     }
@@ -519,7 +522,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--white);
       margin-top: 1.5rem;
       transition: gap 0.2s;
     }
@@ -562,7 +565,7 @@
       align-items: center;
       gap: 0.75rem;
       background: var(--signal);
-      color: var(--navy);
+      color: var(--white);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -593,7 +596,7 @@
     .people-headline {
       font-size: clamp(1.4rem, 2.5vw, 2rem);
       font-weight: 300;
-      color: var(--navy);
+      color: var(--white);
       line-height: 1.3;
       max-width: 500px;
     }
