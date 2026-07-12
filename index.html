@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="One Island LLC, The signal never existed. The network is underground. The body is the endpoint." />
+  <meta name="description" content="One Island LLC. No audio. No ciphertext. No shared session key. Three protocols. Zero detectable signature." />
   <title>One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,13 +46,16 @@
 
   /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--rule); }
-    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; position: relative; }
+    .nav-utility { background: var(--navy); padding: 0 2.5rem; height: 32px; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+    .nav-utility a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-utility a:hover { color: var(--white); }
+    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; }
     .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
     .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
     .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
-    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
     .nav-links > li { position: relative; display: flex; align-items: center; }
     .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
@@ -77,7 +80,7 @@
       flex-direction: column;
       justify-content: flex-end;
       overflow: hidden;
-      margin-top: 72px;
+      margin-top: 70px;
     }
 
     @media (max-width: 768px) {
@@ -774,14 +777,11 @@
           </div>
         </li>
         <li>
-          <a href="index.html#domains" class="active">What We Do <span class="nav-chevron">&#9660;</span></a>
+          <a href="index.html#capabilities" class="active">What We Do <span class="nav-chevron">&#9660;</span></a>
           <div class="nav-dropdown">
-            <a href="domains/sea.html">Sea</a>
-            <a href="domains/land.html">Land</a>
-            <a href="domains/air.html">Air</a>
-            <a href="domains/space.html">Space</a>
-            <a href="domains/cyber.html">Cyber</a>
-            <a href="domains/subterranean.html">Subterranean</a>
+            <a href="domains/land.html">T3E97 Protocol</a>
+            <a href="domains/cyber-hollow.html">Hollow Protocol</a>
+            <a href="domains/cyber-mcneal.html">McNeal Protocol</a>
           </div>
         </li>
       </ul>
@@ -798,12 +798,12 @@
     <div class="hero-content">
       <span class="hero-label"></span>
       <h1 class="hero-title">
-        The signal never existed.<br />
-        The network is underground.<br />
-        <strong>The body is the endpoint.</strong>
+        The voice was never audio.<br />
+        The message was never text.<br />
+        <strong>The key was never shared.</strong>
       </h1>
-      <a href="#domains" class="hero-cta">
-        Explore Our Domains
+      <a href="#capabilities" class="hero-cta">
+        Explore Our Protocols
         <span class="hero-cta-arrow">→</span>
       </a>
     </div>
@@ -814,7 +814,7 @@
     <p class="section-label">[01] What We Do</p>
     <h2 class="what-headline">
      <!-- We deliver <strong>transport-agnostic secure voice reconstruction</strong> across every operational domain. -->
-      We build resilient, software-defined communication ecosystems engineered to secure data transmission across every physical and digital frontier. From high-altitude orbital links to secure intrabody networks, our protocols ensure absolute operational continuity where traditional infrastructure fails.
+      We build communication protocols engineered to leave no detectable trace. Voice that never enters any medium. Data that travels as AI model weights, not ciphertext. Encryption that keys every message independently with no shared session state. Three protocols. Zero electromagnetic signature. No infrastructure required.
     </h2>
     <!--<div class="stats-row">
       <div class="stat-item">
@@ -836,110 +836,9 @@
     </div>
   </section>
 
-  <!-- DOMAINS, Lockheed full-bleed stacked -->
-  <section class="domains-section" id="domains">
-    <div class="domains-header">
-      <p class="section-label">[02] Capabilities by Domain</p>
-      <a href="#capabilities" class="view-all">View All →</a>
-    </div>
-    <p class="domains-sub">
-      Products trusted for our customers' most important missions.
-    </p>
-
-    <!-- SEA -->
-    <a class="domain-block domain-sea" href="domains/sea.html">
-      <div class="domain-block-bg">
-        <!--
-          SWAP IMAGE: style="background-image:url('images/sea.jpg')"
-          Suggested: underwater photo, ocean surface, submarine
-        -->
-      </div>
-      <div class="domain-block-overlay"></div>
-      <!--<div class="domain-status dev">In Development</div> -->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Sea</div>
-        <div class="domain-block-sub">Underwater laser optical &amp; acoustic comms</div>
-      </div>
-    </a>
-
-    <!-- LAND -->
-    <a class="domain-block domain-land" href="domains/land.html">
-      <div class="domain-block-bg">
-        <!--
-          SWAP IMAGE: style="background-image:url('images/land.jpg')"
-          Suggested: field terrain, forest, military outpost
-        -->
-      </div>
-      <div class="domain-block-overlay"></div>
-     <!-- <div class="domain-status live">Live Demo</div>-->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Land</div>
-        <div class="domain-block-sub">Infrastructureless LoRa mesh relay</div>
-      </div>
-    </a>
-
-    <!-- AIR -->
-    <a class="domain-block domain-air" href="domains/air.html">
-      <div class="domain-block-bg">
-        <!--
-          SWAP IMAGE: style="background-image:url('images/air.jpg')"
-          Suggested: drone swarm, sky, aircraft
-        -->
-      </div>
-      <div class="domain-block-overlay"></div>
-      <!--<div class="domain-status dev">In Development</div>-->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Air</div>
-        <div class="domain-block-sub">Drone relay networks &amp; free-space laser</div>
-      </div>
-    </a>
-
-    <!-- SPACE -->
-    <a class="domain-block domain-space" href="domains/space.html">
-      <div class="domain-block-bg"></div>
-      <!-- <div class="domain-block-bg"
-         style="background-image:url('space.jpg');">
-    </div>-->
-      <div class="domain-block-overlay"></div>
-      <!--<div class="domain-status dev">NASA SBIR</div>-->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Space</div>
-        <div class="domain-block-sub">Deep space delay-tolerant voice reconstruction</div>
-      </div>
-    </a>
-
-    <!-- CYBER -->
-    <a class="domain-block domain-cyber" href="domains/cyber.html">
-      <div class="domain-block-bg"></div>
-      <div class="domain-block-overlay"></div>
-      <!--<div class="domain-status live">Patent Pending</div>-->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Cyber</div>
-        <div class="domain-block-sub">McNeal Protocol API &amp; encryption infrastructure</div>
-      </div>
-    </a>
-
-    <!-- SUBSURFACE -->
-    <a class="domain-block domain-subterranean" href="domains/subterranean.html">
-      <div class="domain-block-bg">
-        <!--
-          SWAP IMAGE: style="background-image:url('images/subsurface.jpg')"
-          Suggested: cave, underground tunnel, mining, soil cross section
-        -->
-      </div>
-      <div class="domain-block-overlay"></div>
-     <!-- <div class="domain-status">Roadmap</div>-->
-      <div class="domain-block-content">
-        <div class="domain-block-name">Subterranean</div>
-        <div class="domain-block-sub">Signal through the earth. Zero above-ground emissions.</div>
-      </div>
-    </a>
-
-  </section>
-
   <!-- CAPABILITIES -->
   <section class="cap-section" id="capabilities">
-    <p class="section-label">[03] Capabilities</p>
+    <p class="section-label">[02] Products</p>
     <div class="cap-grid">
 
       <a class="cap-card" href="domains/land.html">
@@ -953,9 +852,20 @@
         <span class="cap-link">Learn More →</span>
       </a>
 
+      <a class="cap-card" href="domains/cyber-hollow.html">
+        <div class="cap-tag">Covert Data Transport</div>
+        <div class="cap-name">Hollow Protocol</div>
+        <div class="cap-desc">
+          Message content embedded into AI model weight space.
+          No ciphertext transmitted. No artifact exists in transit.
+          Recoverable only by authorized operators holding the correct trigger credential.
+        </div>
+        <span class="cap-link">Learn More →</span>
+      </a>
+
       <a class="cap-card" href="domains/cyber-mcneal.html">
         <div class="cap-tag">Encryption Backbone</div>
-        <div class="cap-name">McNeal Protocol V2</div>
+        <div class="cap-name">McNeal Protocol</div>
         <div class="cap-desc">
           Zero-trust per-message encryption. Every message independently keyed.
           Compromise of one message reveals nothing about any other.
@@ -964,62 +874,6 @@
         <span class="cap-link">Learn More →</span>
       </a>
 
-      <a class="cap-card" href="domains/cyber-blindmule.html">
-        <div class="cap-tag">Command and Control</div>
-        <div class="cap-name">Blind Mule Protocol</div>
-        <div class="cap-desc">
-          Coordinator-blind zero-knowledge command routing. The coordinator routes
-          commands without ever knowing what those commands say. No node knows
-          the full network topology. Knowledge is structurally partitioned.
-        </div>
-        <span class="cap-link">Learn More →</span>
-      </a>
-
-      <a class="cap-card" href="domains/subterranean.html">
-        <div class="cap-tag">Underground Infrastructure</div>
-        <div class="cap-name">FoxFeet</div>
-        <div class="cap-desc">
-          Buried relay nodes that use the earth itself as the conduction medium.
-          No physical cable between nodes. No above-ground RF between relay points.
-          Deploy by burial. The network is literally underground.
-        </div>
-        <span class="cap-link">Learn More →</span>
-      </a>
-
-      <a class="cap-card" href="domains/cyber-mosquito.html">
-        <div class="cap-tag">Body-Worn Payload</div>
-        <div class="cap-name">Mosquito</div>
-        <div class="cap-desc">
-          Encrypted payload storage worn on the body. Dead man conditional release.
-          Payload delivered through tissue conduction on skin contact.
-          No radio. No device left on the recipient. The body is the vault.
-        </div>
-        <span class="cap-link">Learn More →</span>
-      </a>
-
-      <a class="cap-card" href="domains/cyber-phantom.html">
-        <div class="cap-tag">Biodynamic Authentication</div>
-        <div class="cap-name">Phantom Carrier</div>
-        <div class="cap-desc">
-          Live heartbeat as the cryptographic key. No stored template. No static
-          biometric. Remote field injection from aerial platforms. The body is
-          the authentication layer and the communication endpoint.
-        </div>
-        <span class="cap-link">Learn More →</span>
-      </a>
-
-      <a class="cap-card" href="domains/cyber-hollow.html">
-  <div class="cap-tag">Covert Data Transport</div>
-  <div class="cap-name">Hollow Protocol</div>
-  <div class="cap-desc">
-    Message content embedded into AI model weight space.
-    No ciphertext transmitted. No artifact exists in transit.
-    Unauthorized execution reports the interceptor's device
-    and location back to the originating party.
-  </div>
-  <span class="cap-link">Learn More →</span>
-</a>
-
     </div>
   </section>
 
@@ -1027,16 +881,11 @@
   <div class="mission-band">
     <div class="mission-inner">
       <h2 class="mission-headline">
-        <strong>One unified stack.</strong> Absolute data sovereignty from orbit to the edge.
+        <strong>Three protocols. One architecture.</strong> Zero detectable signature across every operational environment.
       </h2>
       <div>
         <p class="mission-body">
-         Modern mission networks are fundamentally constrained by the vulnerability of the 
-          electromagnetic spectrum. We engineered a way out. Our architecture secures data 
-          across all operating domains-transforming vulnerable transmissions into decentralized, 
-          signature-silent pathways. Whether routing voice reconstruction through orbital links, 
-          hardened digital architectures, or localized biological mediums, our protocols render data completely invisible to 
-          conventional intercept, jamming, and electronic surveillance assets.
+         Modern mission networks are fundamentally constrained by the vulnerability of the electromagnetic spectrum. We engineered a way out. T3E97 converts voice to encrypted intent capsules before any transmission occurs. Hollow Protocol embeds data payloads into AI model weight space, producing no ciphertext and no detectable carrier. McNeal Protocol independently keys every message with no shared session state. No layer produces a conventional detectable signature. No layer depends on another.
         </p>
       </div>
     </div>
@@ -1061,26 +910,11 @@
       </div>
       <div class="footer-links-grid">
         <div class="footer-col">
-          <div class="footer-col-title">Domains</div>
+          <div class="footer-col-title">Products</div>
           <ul>
-            <li><a href="domains/sea.html">Sea</a></li>
-            <li><a href="domains/land.html">Land</a></li>
-            <li><a href="domains/air.html">Air</a></li>
-            <li><a href="domains/space.html">Space</a></li>
-            <li><a href="domains/cyber.html">Cyber</a></li>
-            <li><a href="domains/subterranean.html">Subterranean</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Capabilities</div>
-              <ul>
             <li><a href="domains/land.html">T3E97 Protocol</a></li>
-            <li><a href="domains/cyber-mcneal.html">McNeal Protocol V2</a></li>
-            <li><a href="domains/cyber-blindmule.html">Blind Mule Protocol</a></li>
-            <li><a href="domains/subterranean.html">FoxFeet</a></li>
-            <li><a href="domains/cyber-mosquito.html">Mosquito</a></li>
-            <li><a href="domains/cyber-phantom.html">Phantom Carrier</a></li>
-                <li><a href="domains/cyber-hollow.html">Hollow Protocol</a></li>
+            <li><a href="domains/cyber-hollow.html">Hollow Protocol</a></li>
+            <li><a href="domains/cyber-mcneal.html">McNeal Protocol</a></li>
           </ul>
         </div>
         <div class="footer-col">
