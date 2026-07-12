@@ -31,7 +31,7 @@
     .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
     .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
     .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
-    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; position: absolute; left: 50%; transform: translateX(-50%); }
     .nav-links > li { position: relative; display: flex; align-items: center; }
     .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--blue); border-bottom-color: var(--blue); }
@@ -100,7 +100,7 @@
     .footer-top { background: #050505; padding: 2.5rem 2.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .footer-logo-block { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-    .footer-logo-block img { width: 32px; height: 32px; object-fit: contain; display: block; filter: brightness(0) invert(1); }
+    .footer-logo-block img { width: 32px; height: 32px; object-fit: contain; display: block; }
     .footer-logo-text { font-size: 0.95rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
     .footer-cols { display: flex; gap: 3rem; flex-wrap: wrap; }
     .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; }
@@ -135,7 +135,7 @@
   <nav>
     <div class="nav-main">
       <a class="nav-logo" href="index.html">
-        <img src="data:image/png;base64,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" alt="One Island LLC" />
+        <img src="logo.png" alt="One Island LLC" />
         <div class="nav-logo-text">
           <span class="nav-logo-name">One Island Tech</span>
           <!-- <span class="nav-logo-sub">Communication Infrastructure</span> -->
@@ -153,8 +153,8 @@
         <li>
           <a href="index.html#capabilities">What We Do <span class="nav-chevron">&#9660;</span></a>
           <div class="nav-dropdown">
-            <a href="domains/land.html">T3E97 Protocol</a>
-            <a href="domains/cyber-hollow.html">Hollow Protocol</a>
+            <a href="domains/land.html">T3E97</a>
+            <a href="domains/cyber-hollow.html">Hollow</a>
             <a href="domains/cyber-mcneal.html">McNeal Protocol</a>
           </div>
         </li>
@@ -174,105 +174,49 @@
     </div>
   </div>
 
-  <main>
-    <div class="content-wrap">
 
-      <div class="statement">
-        <p class="statement-text">Our mission is to make <strong>authenticated, encrypted, infrastructure-free communication</strong> possible in every environment on Earth, and beyond it, by removing the electromagnetic signature from every layer of the communication stack.</p>
-      </div>
-
-      <div class="section">
-        <p class="section-label">The Problem We Solve</p>
-        <h2 class="section-headline">Every existing secure system<br /><strong>still produces a signal.</strong></h2>
-        <p class="section-body">VSAT satellite phones encrypt the channel but stream raw audio to orbit. Military radios encrypt the link but produce RF emissions that can be detected, jammed, and direction-found regardless of encryption strength. Every encrypted voice system ever built still transmits a signal. Encryption protects the content. It does nothing about the fact that a transmission occurred, when it occurred, where it came from, and how long it lasted.</p>
-        <p class="section-body">The fundamental problem is architectural. Every secure communication system is built around the electromagnetic spectrum. One Island Tech builds beneath it. Voice travels as encrypted intent capsules, not audio. Data travels as weight-space embeddings in AI model files, not ciphertext. Encryption applies independently to every message with no shared session key. None of these produce conventional detectable signatures in the spectrum where jamming and surveillance systems operate.</p>
-      </div>
-
-      <hr class="divider" />
-
-      <div class="section">
-        <p class="section-label">Our Approach</p>
-        <h2 class="section-headline">Three protocols. One architecture.<br /><strong>Zero detectable signature.</strong></h2>
-        <p class="section-body">T3E97 converts voice to encrypted intent capsules before transmission. No audio ever enters any medium. Transport agnostic. Works where nothing else does. McNeal Protocol independently keys every message with no shared session keys. Compromise of one message reveals nothing about any other. Hollow Protocol embeds data payloads into AI model weight space. No ciphertext travels. No artifact exists in transit. The payload reconstitutes only with the correct trigger credential.</p>
-        <p class="section-body">Together these three protocols form a communication stack in which no layer produces a conventional detectable signature. Voice becomes data. Data becomes model weights. Encryption exists at the message level, not the session level. The signal that was always assumed to be unavoidable is simply absent.</p>
-      </div>
-
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-num">01</div>
-          <div class="pillar-title">Voice Never Travels</div>
-          <div class="pillar-body">T3E97 converts speech to encrypted intent capsules. Raw audio never enters any medium. Nothing to intercept, jam, or replay.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">02</div>
-          <div class="pillar-title">The Message Has No Physical Form</div>
-          <div class="pillar-body">Hollow Protocol embeds payload data into AI model weight space. No ciphertext travels. No artifact exists in transit. Without the correct trigger credential, nothing can be recovered.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">03</div>
-          <div class="pillar-title">Trigger-Gated Reconstruction</div>
-          <div class="pillar-body">A Hollow payload reconstitutes only at the intersection of a pre-shared base model, the transmitted adapter, and a trigger credential held solely by the authorized receiver. All three must be present. Nothing else works.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">04</div>
-          <div class="pillar-title">Per-Message Encryption</div>
-          <div class="pillar-body">McNeal Protocol applies a unique cryptographic key to every message independently. Compromise of one reveals nothing about any other. No shared session state.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">05</div>
-          <div class="pillar-title">No Shared Session State</div>
-          <div class="pillar-body">McNeal Protocol carries no session keys. Each message is independently keyed and independently sealed. There is no session to intercept, no key exchange to replay, and no shared state to compromise.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">06</div>
-          <div class="pillar-title">Any Channel. Any Environment.</div>
-          <div class="pillar-body">T3E97, Hollow Protocol, and McNeal Protocol operate across any transport medium. Air-gapped. Offline. Denied environments. No server. No infrastructure. No network required.</div>
-        </div>
-      </div>
-
-      <hr class="divider" />
-
-      <div class="section" id="labs">
-        <p class="section-label">One Island Labs</p>
-        <h2 class="section-headline">Research at the edge<br /><strong>of what&rsquo;s possible.</strong></h2>
-        <p class="section-body">One Island Labs is the research arm driving the frontier of the One Island stack into domains no existing communication system reaches. Active research areas include neural steganographic capacity scaling for Hollow Protocol, voice-to-intent reconstruction optimization for T3E97 at extended latencies, and post-quantum cryptographic architecture for McNeal Protocol.</p>
-        <p class="section-body">We are seeking research partnerships with universities, national laboratories, and defense research organizations working on communication in denied, degraded, and electromagnetically contested environments.</p>
-      </div>
-
-      <hr class="divider" />
-
-    <!--  <div class="section">
-        <p class="section-label">Inventor</p>
-        <h2 class="section-headline">Built by one person.<br /><strong>Designed for everyone who needs it.</strong></h2>
-        <p class="section-body">One Island Tech was founded by Antonio Lambert, an engineer working at Lockheed Martin who recognized a fundamental flaw in every secure communication architecture ever fielded: they all still produce a signal. T3E97, Hollow Protocol, and McNeal Protocol were designed, prototyped, and patent-filed independently. Three protocols. One architecture. The working demo runs on hardware that costs less than dinner.</p>
-        <p class="section-body">The goal is not to build another encrypted radio. The goal is to make the electromagnetic spectrum optional, so that a soldier in a denied environment, a field operative who cannot carry a transmitter, and an operator with no network access can all communicate through whatever medium exists, with no detectable signature above it, and with authentication that cannot be separated from the message it protects.</p>
-      </div> -->
-
+  <section style="padding: 8rem 2.5rem 5rem; max-width: 900px; margin: 0 auto; margin-top: 72px;">
+    <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem;">One Island Tech</p>
+    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.15; margin-bottom: 1.5rem;">We build communication systems<br /><strong>that leave no trace.</strong></h1>
+    <p style="font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 600px; line-height: 1.75; margin-bottom: 3rem;">Founded by Antonio Lambert. Recognized by DARPA Spark Tank. Palantir Fellowship. Three proprietary protocols, provisional patents filed, working prototypes running on consumer hardware.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem;">
+      <a href="domains/land.html" style="display:block; padding: 1.75rem; border: 1px solid var(--border); text-decoration: none; background: var(--surface); transition: border-color 0.2s;">
+        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;">Voice Infrastructure</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem;">T3E97</div>
+        <div style="font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Voice that never transmits audio. No infrastructure required.</div>
+        <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-top: 1rem;">Learn More →</div>
+      </a>
+      <a href="domains/cyber-hollow.html" style="display:block; padding: 1.75rem; border: 1px solid var(--border); text-decoration: none; background: var(--surface); transition: border-color 0.2s;">
+        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;">Covert Data Transport</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem;">Hollow</div>
+        <div style="font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Messages embedded in AI model weights. No ciphertext exists.</div>
+        <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-top: 1rem;">Learn More →</div>
+      </a>
+      <a href="domains/cyber-mcneal.html" style="display:block; padding: 1.75rem; border: 1px solid var(--border); text-decoration: none; background: var(--surface); transition: border-color 0.2s;">
+        <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;">Encryption Backbone</div>
+        <div style="font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem;">McNeal Protocol</div>
+        <div style="font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Per-message encryption. No shared session state. Post-quantum oriented.</div>
+        <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-top: 1rem;">Learn More →</div>
+      </a>
     </div>
-  </main>
-
-  <div class="quote-band">
-    <div class="quote-inner">
-      <p class="quote-text">
-        &ldquo;The signal never existed.<br />The message was never there.<br /><strong>The transmission cannot be found.</strong>&rdquo;
-      </p>
-      <p class="quote-attr">One Island Tech, Core Principle</p>
-      <a href="contact.html" class="quote-cta">Partner With Us &#8594;</a>
+    <div style="border-top: 1px solid var(--border); padding-top: 3rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+      <a href="contact.html" style="display:inline-flex; align-items:center; gap:0.75rem; background:var(--blue); color:#fff; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 1.75rem; text-decoration:none;">Get In Touch &#8594;</a>
+      <span style="font-size: 0.8rem; color: rgba(255,255,255,0.3);">DARPA Spark Tank &nbsp;·&nbsp; Palantir Fellowship &nbsp;·&nbsp; Patents Filed</span>
     </div>
-  </div>
+  </section>
 
   <div class="footer-top">
     <div class="footer-inner">
       <a class="footer-logo-block" href="index.html">
-        <img src="data:image/png;base64,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" alt="One Island Tech" />
+        <img src="logo.png" alt="One Island Tech" />
         <span class="footer-logo-text">One Island Tech</span>
       </a>
       <div class="footer-cols">
         <div class="footer-col">
           <div class="footer-col-title">Products</div>
           <ul>
-            <li><a href="domains/land.html">T3E97 Protocol</a></li>
-            <li><a href="domains/cyber-hollow.html">Hollow Protocol</a></li>
+            <li><a href="domains/land.html">T3E97</a></li>
+            <li><a href="domains/cyber-hollow.html">Hollow</a></li>
             <li><a href="domains/cyber-mcneal.html">McNeal Protocol</a></li>
           </ul>
         </div>
