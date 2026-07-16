@@ -233,7 +233,7 @@
 Every McNeal message begins with a fresh key. An ephemeral X25519 handshake derives a 32-byte root key, which feeds a double ratchet that produces a unique per-message key for each message sent. That key does double duty: it encrypts the payload and generates a one-time frequency alphabet, so the same word maps to entirely different tones from one message to the next. The text is encoded into that tone set, rendered to audio, and only then sealed with ChaCha20-Poly1305 - encryption wrapped around a signal that was already unreadable without the right per-message alphabet. The result is packed into a compact binary frame and sent. Two independent layers, compounding rather than repeating: break one and there's still nothing to read.    </p>
   </div>
   <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../Hollowc.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
+    <img src="../mcneal_protocol_send_pipeline.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
   </div>
 </div>
 
@@ -245,7 +245,7 @@ Every McNeal message begins with a fresh key. An ephemeral X25519 handshake deri
 Receiving reverses the pipeline, but with hard guards at every step. An incoming frame is validated by its magic bytes and version before anything else touches it. A 256-slot sliding replay window then checks the sequence number - duplicates and stale frames are dropped before a single cryptographic operation is wasted. Because packets can arrive out of order, the session resolves the correct per-message key either from cache or by advancing the ratchet forward, stashing any keys it passes along the way. Only then is the frame opened and authenticated, its header verified as part of the cipher itself so no byte can be tampered with in transit. Fragments are reassembled, and the tones are decoded back to text using the exact same alphabet the sender derived: reconstructable only by the holder of the matching key.</p>
   </div>
   <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../Hollowc.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
+    <img src="../mcneal_protocol_recieve_pipeline.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
   </div>
 </div>
 
