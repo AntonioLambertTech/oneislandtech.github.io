@@ -51,6 +51,16 @@
     .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
     .nav-dropdown a:last-child { border-bottom: none; }
     .nav-dropdown a:hover { background: var(--border); color: var(--blue); }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 250; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: currentColor; color: var(--white); transition: transform 0.25s, opacity 0.25s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-panel { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface, #0D1117); border-top: 0 solid var(--signal); box-shadow: 0 12px 32px rgba(0,0,0,0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease, border-top-width 0.15s ease; }
+    .nav-mobile-panel.open { max-height: 600px; border-top-width: 2px; }
+    .nav-mobile-panel a { padding: 0.9rem 1.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08)); opacity: 0.75; }
+    .nav-mobile-panel a.sub { padding-left: 2.25rem; font-weight: 500; text-transform: none; font-size: 0.8rem; opacity: 0.55; }
+    .nav-mobile-panel a:active { opacity: 1; }
     .nav-right { display: flex; align-items: center; gap: 0.75rem; }
     .nav-partner-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--blue); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.2rem; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .nav-partner-btn:hover { background: var(--blue2); }
@@ -133,6 +143,11 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .nav-utility { display: none; }
+      .nav-partner-btn { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-panel { display: flex; }
+      .nav-links { display: none; }
       .nav-partner-btn { display: none; }
       .nav-utility { display: none; }
       .hero { margin-top: 70px; }
@@ -207,9 +222,22 @@
           </div>
         </li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var h=document.getElementById('navHamburger'),p=document.getElementById('navMobilePanel');var open=h.classList.toggle('open');p.classList.toggle('open');h.setAttribute('aria-expanded',open);">
+        <span></span><span></span><span></span>
+      </button>
       <div class="nav-right">
      <!--   <a href="mailto:contact@oneislandtech.com" class="nav-partner-btn">Partner Inquiry &#8594;</a> -->
       </div>
+    </div>
+      <div class="nav-mobile-panel" id="navMobilePanel">
+      <a href="../index.html#who">Who We Are</a>
+      <a class="sub" href="../mission.html">Our Mission</a>
+      <a class="sub" href="../labs.html">One Island Labs</a>
+      <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
+      <a href="../index.html#capabilities">What We Do</a>
+      <a class="sub" href="land.html">T3E97</a>
+      <a class="sub" href="cyber-hollow.html">Hollow</a>
+      <a class="sub" href="cyber-mcneal.html">McNeal Protocol</a>
     </div>
   </nav>
   <section class="hero" style="min-height:45vh;">
