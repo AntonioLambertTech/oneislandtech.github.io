@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Shoe Giveaway - Tulones</title>
+<title>Shoe Giveaway — Tulones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -77,7 +77,7 @@
 
 <div class="closed-wrap" id="closedView" style="display:none;">
   <div class="closed-box">
-    <div class="closed-icon"></div>
+    <div class="closed-icon">🔒</div>
     <h2>Giveaway Closed</h2>
     <p>All spots have been claimed. Follow us on social media so you never miss the next one.</p>
     <a href="https://tulones.com" target="_blank">Shop Tulones &rarr;</a>
@@ -117,6 +117,27 @@
             </select>
           </div>
         </div>
+        <div class="field">
+          <label for="shoesize">Shoe size (kids)</label>
+          <div class="select-wrap">
+            <select id="shoesize" required>
+              <option value="" disabled selected>Select size</option>
+              <option>1Y</option>
+              <option>1.5Y</option>
+              <option>2Y</option>
+              <option>2.5Y</option>
+              <option>3Y</option>
+              <option>3.5Y</option>
+              <option>4Y</option>
+              <option>4.5Y</option>
+              <option>5Y</option>
+              <option>5.5Y</option>
+              <option>6Y</option>
+              <option>6.5Y</option>
+              <option>7Y</option>
+            </select>
+          </div>
+        </div>
         <button type="submit" id="submitBtn">Enter Giveaway</button>
         <p class="err" id="errMsg"></p>
       </form>
@@ -125,7 +146,7 @@
     <div class="success" id="successView">
       <div class="check-ring">&#10003;</div>
       <h2>You're Registered</h2>
-      <p>Your entry is in.</p>
+      <p>Your entry is in. We'll reach out to winners directly.<br>Good luck!</p>
       <a href="https://tulones.com" target="_blank">Shop Tulones &rarr;</a>
     </div>
   </div>
@@ -155,6 +176,7 @@
       email:     email,
       phone:     phone,
       gender:    document.getElementById("gender").value,
+      shoeSize:  document.getElementById("shoesize").value,
       product:   PRODUCT
     });
 
