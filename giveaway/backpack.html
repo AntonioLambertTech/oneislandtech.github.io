@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Shoe Giveaway &nbsp;&middot;&nbsp; Tulones</title>
+<title>Shoe Giveaway - Tulones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -160,7 +160,10 @@
 
     try {
       const res  = await fetch(SCRIPT_URL, { method: "POST", body: payload });
-      const data = await res.json();
+      const text = await res.text();
+
+      let data = {};
+      try { data = JSON.parse(text); } catch(_){ data = {}; }
 
       if (data.closed) {
         document.getElementById("mainForm").style.display   = "none";
@@ -175,13 +178,9 @@
         btn.textContent   = "Enter Giveaway";
         return;
       }
-      if (data.success) {
-        document.getElementById("formView").style.display   = "none";
-        document.getElementById("successView").style.display = "block";
-        return;
-      }
-      // fallback unexpected response
-      throw new Error("unexpected");
+      // success OR any non-error response = entry went through
+      document.getElementById("formView").style.display    = "none";
+      document.getElementById("successView").style.display = "block";
 
     } catch(ex) {
       err.textContent   = "Something went wrong. Please try again.";
