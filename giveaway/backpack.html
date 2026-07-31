@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Backpack Giveaway</title>
+<style>
+  :root{
+    --ink:#1f2a24;
+    --canvas:#eef2ec;
+    --card:#ffffff;
+    --pine:#2f5d46;
+    --pine-deep:#234534;
+    --straw:#e8b74a;
+    --line:#cfd8cf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Trebuchet MS", "Segoe UI", sans-serif;
+    background:var(--canvas);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background-image:radial-gradient(var(--line) 1px, transparent 1px);
+    background-size:22px 22px;
+  }
+  .card{
+    background:var(--card);
+    max-width:460px;
+    width:100%;
+    border:2px solid var(--pine-deep);
+    border-radius:14px;
+    box-shadow:8px 8px 0 var(--pine);
+    padding:36px 32px;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--straw);
+    color:var(--pine-deep);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:34px;
+    line-height:1.15;
+    color:var(--pine-deep);
+    margin-bottom:10px;
+  }
+  .sub{font-size:15px;color:#4a574f;margin-bottom:26px;}
+  label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--pine-deep);}
+  input{
+    width:100%;
+    padding:12px 14px;
+    font-size:15px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    margin-bottom:16px;
+    font-family:inherit;
+  }
+  input:focus{outline:2px solid var(--pine);border-color:var(--pine);}
+  .row{display:flex;gap:12px;}
+  .row > div{flex:1;}
+  button{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+    font-weight:700;
+    color:#fff;
+    background:var(--pine);
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  button:hover{background:var(--pine-deep);}
+  button:disabled{opacity:.6;cursor:wait;}
+  .success{
+    display:none;
+    text-align:center;
+    padding:20px 0 8px;
+  }
+  .success .check{
+    font-size:44px;
+    color:var(--pine);
+    margin-bottom:10px;
+  }
+  .success h2{font-family:Georgia, serif;color:var(--pine-deep);margin-bottom:6px;}
+  .success p{color:#4a574f;font-size:15px;}
+  .error-msg{
+    display:none;
+    color:#a33;
+    font-size:14px;
+    margin-top:12px;
+    text-align:center;
+  }
+  @media (max-width:420px){
+    .row{flex-direction:column;gap:0;}
+    h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div id="formView">
+      <span class="eyebrow">Giveaway</span>
+      <h1>Win a Free Backpack</h1>
+      <p class="sub">Fill out the form below to enter. One entry per person.</p>
+      <form id="entryForm">
+        <div class="row">
+          <div>
+            <label for="fname">First name</label>
+            <input type="text" id="fname" name="fname" required autocomplete="given-name">
+          </div>
+          <div>
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="lname" required autocomplete="family-name">
+          </div>
+        </div>
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" required autocomplete="tel">
+        <button type="submit" id="submitBtn">Enter giveaway</button>
+        <p class="error-msg" id="errorMsg">Something went wrong. Please try again.</p>
+      </form>
+    </div>
+
+    <div class="success" id="successView">
+      <div class="check">&#10003;</div>
+      <h2>You're registered!</h2>
+      <p>Your backpack giveaway entry went through. Good luck!</p>
+    </div>
+  </div>
+
+<script>
+  // PASTE YOUR APPS SCRIPT WEB APP URL BELOW
+  const SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+  const PRODUCT = "Backpack";
+
+  document.getElementById("entryForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const btn = document.getElementById("submitBtn");
+    const err = document.getElementById("errorMsg");
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+    err.style.display = "none";
+
+    const payload = new URLSearchParams({
+      firstName: document.getElementById("fname").value.trim(),
+      lastName:  document.getElementById("lname").value.trim(),
+      email:     document.getElementById("email").value.trim(),
+      phone:     document.getElementById("phone").value.trim(),
+      product:   PRODUCT
+    });
+
+    try{
+      await fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", body: payload });
+      document.getElementById("formView").style.display = "none";
+      document.getElementById("successView").style.display = "block";
+    }catch(ex){
+      err.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Enter giveaway";
+    }
+  });
+</script>
+</body>
+</html>
