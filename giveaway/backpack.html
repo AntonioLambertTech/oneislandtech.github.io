@@ -4,228 +4,143 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Backpack Giveaway — Tulones</title>
+<title>Shoe Giveaway — Tulones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
-
   :root{
     --black:#0a0a0a;
-    --white:#f5f5f0;
-    --gold:#c0392b;
-    --gold-dim:#8b0000;
-    --grey:#1a1a1a;
-    --mid:#2a2a2a;
-    --muted:#666;
+    --white:#ffffff;
     --red:#c0392b;
+    --red-dark:#8b0000;
+    --grey:#f5f5f5;
+    --muted:#777;
+    --border:#e0e0e0;
   }
-
   body{
-    background:#ffffff;
+    background:var(--white);
     color:var(--black);
-    font-family:'Inter', sans-serif;
+    font-family:'Inter',sans-serif;
     min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
-
-  /* NAV BAR */
   nav{
     width:100%;
     display:flex;
     justify-content:center;
     padding:18px 24px;
-    border-bottom:1px solid #e0e0e0;
+    border-bottom:1px solid var(--border);
   }
   .logo{
-    font-family:'Bebas Neue', sans-serif;
+    font-family:'Bebas Neue',sans-serif;
     font-size:28px;
     letter-spacing:.12em;
     color:var(--black);
     text-decoration:none;
   }
-
-  /* HERO STRIP */
   .hero{
     width:100%;
     max-width:900px;
-    padding:60px 24px 0;
+    padding:48px 24px 0;
     text-align:center;
   }
+  .product-img-wrap{margin-bottom:24px;display:flex;justify-content:center;}
+  .product-img-wrap img{max-width:180px;object-fit:contain;}
   .tag{
     display:inline-block;
-    border:1px solid #c0392b;
-    color:#c0392b;
+    border:1px solid var(--red);
+    color:var(--red);
     font-size:11px;
     font-weight:700;
     letter-spacing:.2em;
     text-transform:uppercase;
     padding:5px 16px;
     border-radius:2px;
-    margin-bottom:22px;
+    margin-bottom:18px;
   }
   h1{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:clamp(64px, 12vw, 120px);
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(60px,12vw,110px);
     line-height:.95;
     letter-spacing:.04em;
     color:var(--black);
     margin-bottom:10px;
   }
-  h1 span{color:#c0392b;}
+  h1 span{color:var(--red);}
   .sub{
     font-size:15px;
     color:var(--muted);
     max-width:420px;
-    margin:0 auto 48px;
+    margin:0 auto 36px;
     line-height:1.6;
   }
+  .divider{width:60px;height:2px;background:var(--red);margin:0 auto 40px;}
 
-  /* DIVIDER LINE */
-  .divider{
-    width:60px;
-    height:2px;
-    background:#c0392b;
-    margin:0 auto 48px;
-  }
-
-  /* FORM CARD */
-  .form-wrap{
-    width:100%;
-    max-width:520px;
-    padding:0 24px 80px;
-  }
-  .form-card{
-    background:#f5f5f5;
-    border:1px solid #e0e0e0;
-    border-radius:4px;
-    padding:36px 32px;
-  }
-  .form-title{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:26px;
-    letter-spacing:.08em;
-    color:var(--black);
-    margin-bottom:6px;
-  }
-  .form-sub{
-    font-size:13px;
-    color:var(--muted);
-    margin-bottom:28px;
+  /* CLOSED */
+  .closed-wrap{width:100%;max-width:520px;padding:0 24px 80px;text-align:center;}
+  .closed-box{background:var(--grey);border:1px solid var(--border);border-radius:4px;padding:48px 32px;}
+  .closed-icon{font-size:40px;margin-bottom:16px;}
+  .closed-box h2{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.08em;margin-bottom:10px;}
+  .closed-box p{color:var(--muted);font-size:15px;line-height:1.6;}
+  .closed-box a{
+    display:inline-block;margin-top:22px;font-size:12px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+    text-decoration:none;border-bottom:1px solid var(--red-dark);padding-bottom:2px;
   }
 
+  /* FORM */
+  .form-wrap{width:100%;max-width:520px;padding:0 24px 80px;}
+  .form-card{background:var(--grey);border:1px solid var(--border);border-radius:4px;padding:36px 32px;}
+  .form-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.08em;color:var(--black);margin-bottom:6px;}
+  .form-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
   .row{display:flex;gap:14px;}
-  .row > .field{flex:1;}
+  .row>.field{flex:1;}
   .field{margin-bottom:18px;}
-
-  label{
-    display:block;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--muted);
-    margin-bottom:7px;
-  }
-  input{
-    width:100%;
-    padding:13px 14px;
-    font-size:15px;
-    font-family:'Inter', sans-serif;
-    background:#ffffff;
-    border:1px solid #d0d0d0;
-    border-radius:3px;
-    color:var(--black);
-    transition:border-color .15s;
+  label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+  input, select{
+    width:100%;padding:13px 14px;font-size:15px;font-family:'Inter',sans-serif;
+    background:var(--white);border:1px solid #d0d0d0;border-radius:3px;
+    color:var(--black);transition:border-color .15s;appearance:none;
   }
   input::placeholder{color:#aaa;}
-  input:focus{outline:none;border-color:#c0392b;}
-
-  button{
-    width:100%;
-    padding:16px;
-    font-family:'Bebas Neue', sans-serif;
-    font-size:20px;
-    letter-spacing:.14em;
-    color:var(--black);
-    background:#c0392b;
-    border:none;
-    border-radius:3px;
-    cursor:pointer;
-    margin-top:6px;
-    transition:background .15s, transform .1s;
+  input:focus, select:focus{outline:none;border-color:var(--red);}
+  .select-wrap{position:relative;}
+  .select-wrap::after{
+    content:"▾";position:absolute;right:14px;top:50%;
+    transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:14px;
   }
-  button:hover{background:#e74c3c;}
+  button{
+    width:100%;padding:16px;font-family:'Bebas Neue',sans-serif;font-size:20px;
+    letter-spacing:.14em;color:var(--white);background:var(--red);border:none;
+    border-radius:3px;cursor:pointer;margin-top:6px;transition:background .15s,transform .1s;
+  }
+  button:hover{background:var(--red-dark);}
   button:active{transform:scale(.985);}
   button:disabled{opacity:.5;cursor:wait;}
-
-  .err{
-    display:none;
-    color:var(--red);
-    font-size:13px;
-    margin-top:12px;
-    text-align:center;
-  }
+  .err{display:none;font-size:13px;margin-top:12px;text-align:center;color:var(--red);}
 
   /* SUCCESS */
-  .success{
-    display:none;
-    text-align:center;
-    padding:32px 0 8px;
-  }
+  .success{display:none;text-align:center;padding:32px 0 8px;}
   .check-ring{
-    width:64px;height:64px;
-    border-radius:50%;
-    border:2px solid #c0392b;
+    width:64px;height:64px;border-radius:50%;border:2px solid var(--red);
     display:flex;align-items:center;justify-content:center;
-    margin:0 auto 18px;
-    font-size:26px;
-    color:#c0392b;
+    margin:0 auto 18px;font-size:26px;color:var(--red);
   }
-  .success h2{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:32px;
-    letter-spacing:.08em;
-    color:var(--black);
-    margin-bottom:8px;
-  }
+  .success h2{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.08em;color:var(--black);margin-bottom:8px;}
   .success p{color:var(--muted);font-size:14px;line-height:1.6;}
   .success a{
-    display:inline-block;
-    margin-top:22px;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:#c0392b;
-    text-decoration:none;
-    border-bottom:1px solid #8b0000;
-    padding-bottom:2px;
+    display:inline-block;margin-top:22px;font-size:12px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--red);
+    text-decoration:none;border-bottom:1px solid var(--red-dark);padding-bottom:2px;
   }
 
-  /* FOOTER STRIP */
   footer{
-    width:100%;
-    border-top:1px solid #e0e0e0;
-    padding:22px 24px;
-    text-align:center;
-    font-size:12px;
-    color:#999;
-    letter-spacing:.06em;
+    width:100%;border-top:1px solid var(--border);padding:22px 24px;
+    text-align:center;font-size:12px;color:#aaa;letter-spacing:.06em;
   }
-
-  .product-img-wrap{
-    margin-bottom:28px;
-    display:flex;
-    justify-content:center;
-  }
-  .product-img-wrap img{
-    max-width:200px;
-    object-fit:contain;
-  }
-
   @media(max-width:480px){
     .row{flex-direction:column;gap:0;}
     .form-card{padding:28px 22px;}
@@ -234,25 +149,38 @@
 </head>
 <body>
 
+<!--<nav>
+  <a class="logo" href="https://tulones.com">Tulones</a>
+</nav> -->
+
 <section class="hero">
-    <div class="product-img-wrap">
+  <div class="product-img-wrap">
     <a href="https://tulones.com" target="_blank">
       <img src="TULONES-LOGO.png" alt="Tulones">
     </a>
   </div>
   <div class="tag">Limited Giveaway</div>
-  <h1>Win A Free<br><span>Backpack</span></h1>
-  <p class="sub">One entry per person. Enter your info below and we'll announce the winner soon.</p>
+  <h1>Win A Free<br><span>Pair of Shoes</span></h1>
+  <p class="sub">One entry per child. Enter your info below and we'll announce winners soon.</p>
   <div class="divider"></div>
 </section>
 
-<div class="form-wrap">
-  <div class="form-card">
+<!-- CLOSED STATE -->
+<div class="closed-wrap" id="closedView" style="display:none;">
+  <div class="closed-box">
+    <div class="closed-icon">🔒</div>
+    <h2>Giveaway Closed</h2>
+    <p>All spots have been claimed. Follow us on social media so you never miss the next one.</p>
+    <a href="https://tulones.com" target="_blank">Shop Tulones &rarr;</a>
+  </div>
+</div>
 
+<!-- FORM -->
+<div class="form-wrap" id="mainForm">
+  <div class="form-card">
     <div id="formView">
       <div class="form-title">Enter to Win</div>
       <div class="form-sub">From the South to the World.</div>
-
       <form id="entryForm">
         <div class="row">
           <div class="field">
@@ -272,48 +200,113 @@
           <label for="phone">Phone number</label>
           <input type="tel" id="phone" required placeholder="(555) 000-0000" autocomplete="tel">
         </div>
+        <div class="field">
+          <label for="gender">Child's category</label>
+          <div class="select-wrap">
+            <select id="gender" required>
+              <option value="" disabled selected>Select one</option>
+              <option value="Boy / Gender Neutral">Boy / Gender Neutral</option>
+              <option value="Girl">Girl</option>
+            </select>
+          </div>
+        </div>
         <button type="submit" id="submitBtn">Enter Giveaway</button>
-        <p class="err" id="errMsg">Something went wrong. Please try again.</p>
+        <p class="err" id="errMsg"></p>
       </form>
     </div>
 
     <div class="success" id="successView">
       <div class="check-ring">&#10003;</div>
       <h2>You're Registered</h2>
-      <p>Your entry is in. We'll reach out to the winner directly.<br>Good luck!</p>
-      <a href="https://tulones.com">Shop Tulones &rarr;</a>
+      <p>Your entry is in. We'll reach out to winners directly.<br>Good luck!</p>
+      <a href="https://tulones.com" target="_blank">Shop Tulones &rarr;</a>
     </div>
-
   </div>
 </div>
 
 <footer>TULONES &copy; 2026 &nbsp;&middot;&nbsp; ATLANTA, GA</footer>
 
 <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYKim2ScoStt6emJ-jn2Q8N5zpvPpYEGskMVUtn9SCKPM5JePffcbg0TAFwxzfT_X8/exec";
-  const PRODUCT = "Backpack";
+  const SCRIPT_URL  = "https://script.google.com/macros/s/AKfycbxYKim2ScoStt6emJ-jn2Q8N5zpvPpYEGskMVUtn9SCKPM5JePffcbg0TAFwxzfT_X8/exec";
+  const PRODUCT     = "Shoes";
+  const CHECK_URL   = SCRIPT_URL + "?action=check";
+
+  async function checkDuplicate(email, phone){
+    try {
+      const url = SCRIPT_URL + "?action=check&email=" + encodeURIComponent(email) + "&phone=" + encodeURIComponent(phone);
+      const res = await fetch(url);
+      const data = await res.json();
+      return data; // { duplicate: bool, field: "email"|"phone"|null, closed: bool }
+    } catch(e){
+      return null;
+    }
+  }
 
   document.getElementById("entryForm").addEventListener("submit", async function(e){
     e.preventDefault();
-    const btn = document.getElementById("submitBtn");
-    const err = document.getElementById("errMsg");
+    const btn     = document.getElementById("submitBtn");
+    const err     = document.getElementById("errMsg");
+    const email   = document.getElementById("email").value.trim();
+    const phone   = document.getElementById("phone").value.trim();
+    const gender  = document.getElementById("gender").value;
+
     btn.disabled = true;
-    btn.textContent = "Submitting...";
+    btn.textContent = "Checking...";
     err.style.display = "none";
 
+    // Step 1: check for duplicates and spot count via Apps Script GET
+    const check = await checkDuplicate(email, phone);
+
+    if(check && check.closed){
+      document.getElementById("mainForm").style.display  = "none";
+      document.getElementById("closedView").style.display = "block";
+      return;
+    }
+
+    if(check && check.duplicate){
+      const field = check.field === "email" ? "email address" : "phone number";
+      err.textContent  = "That " + field + " has already been used to enter.";
+      err.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Enter Giveaway";
+      return;
+    }
+
+    // Step 2: submit
+    btn.textContent = "Submitting...";
     const payload = new URLSearchParams({
+      action:    "submit",
       firstName: document.getElementById("fname").value.trim(),
       lastName:  document.getElementById("lname").value.trim(),
-      email:     document.getElementById("email").value.trim(),
-      phone:     document.getElementById("phone").value.trim(),
+      email:     email,
+      phone:     phone,
+      gender:    gender,
       product:   PRODUCT
     });
 
     try{
-      await fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", body: payload });
-      document.getElementById("formView").style.display = "none";
+      const res  = await fetch(SCRIPT_URL, { method:"POST", body: payload });
+      const data = await res.json();
+
+      if(data && data.closed){
+        document.getElementById("mainForm").style.display  = "none";
+        document.getElementById("closedView").style.display = "block";
+        return;
+      }
+      if(data && data.duplicate){
+        const field = data.field === "email" ? "email address" : "phone number";
+        err.textContent  = "That " + field + " has already been used to enter.";
+        err.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Enter Giveaway";
+        return;
+      }
+
+      document.getElementById("formView").style.display   = "none";
       document.getElementById("successView").style.display = "block";
+
     } catch(ex){
+      err.textContent   = "Something went wrong. Please try again.";
       err.style.display = "block";
       btn.disabled = false;
       btn.textContent = "Enter Giveaway";
