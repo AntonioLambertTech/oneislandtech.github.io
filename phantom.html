@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Phantom is a free push to talk app for Meshtastic. Send encrypted voice over mesh radio with no cell service, no internet, and no cloud, rebuilt in your own voice on the other end. Available on iOS and Android." />
+  <meta name="keywords" content="push to talk meshtastic, voice over mesh, Meshtastic voice app, encrypted voice mesh radio, offline voice messaging, LoRa voice communication, mesh radio app, off grid communication app, voice calls no cell service, Meshtastic PTT" />
+  <meta property="og:title" content="Phantom — Push to Talk Over Mesh Radio" />
+  <meta property="og:description" content="Free, offline, encrypted voice over Meshtastic LoRa mesh. No cell service, no cloud, no servers." />
+  <meta property="og:type" content="website" />
+  <title>Phantom — Push to Talk Over Mesh Radio | One Island Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ4DHDNJ4H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HQ4DHDNJ4H');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:   #E8ECF0;
+      --off:     #111827;
+      --rule:    #1E2A3A;
+      --muted:   #4A5C6E;
+      --mid:     #8A9BAE;
+      --dark:    #E8ECF0;
+      --navy:    #060D18;
+      --blue:    #3B82F6;
+      --blue2:   #2563EB;
+      --signal:  #00C896;
+      --bg:      #050505;
+      --surface: #0F0F0F;
+      --border:  #1C1C1C;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .nav-utility { background: var(--navy); padding: 0 2.5rem; height: 32px; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; }
+    .nav-utility a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-utility a:hover { color: var(--white); }
+    .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 72px; }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; object-fit: contain; display: block; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-size: 1.15rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-logo-sub { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+    .nav-links { display: flex; align-items: stretch; list-style: none; height: 72px; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-links > li { position: relative; display: flex; align-items: center; }
+    .nav-links > li > a { display: flex; align-items: center; gap: 0.35rem; padding: 0 1.25rem; height: 100%; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .nav-links > li > a:hover { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-links > li > a.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .nav-chevron { font-size: 0.55rem; transition: transform 0.2s; }
+    .nav-links > li:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--surface); border-top: 3px solid var(--blue); box-shadow: 0 8px 32px rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+    .nav-links > li:hover .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-dropdown a { display: block; padding: 0.85rem 1.25rem; font-size: 0.82rem; font-weight: 500; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { background: var(--border); color: var(--blue); }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 250; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: currentColor; color: var(--white); transition: transform 0.25s, opacity 0.25s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-panel { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface, #0D1117); border-top: 0 solid var(--signal); box-shadow: 0 12px 32px rgba(0,0,0,0.6); max-height: 0; overflow: hidden; transition: max-height 0.3s ease, border-top-width 0.15s ease; }
+    .nav-mobile-panel.open { max-height: 600px; border-top-width: 2px; }
+    .nav-mobile-panel a { padding: 0.9rem 1.5rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08)); opacity: 0.75; }
+    .nav-mobile-panel a.sub { padding-left: 2.25rem; font-weight: 500; text-transform: none; font-size: 0.8rem; opacity: 0.55; }
+    .nav-mobile-panel a:active { opacity: 1; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-utility { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-mobile-panel { display: flex; }
+      .hero { margin-top: 72px; min-height: 420px; }
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      margin-top: 70px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(5,15,15,0.35) 0%, rgba(5,15,15,0.15) 40%, rgba(3,10,10,0.9) 100%),
+        linear-gradient(135deg, #001A10 0%, #003828 45%, #000F08 100%);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,150,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,150,0.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .hero-content { position: relative; z-index: 2; padding: 0 2rem 3rem; max-width: 900px; }
+    .hero-label { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal); margin-bottom: 1rem; }
+    .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .hero-title strong { font-weight: 700; }
+    .hero-sub { font-size: 1.05rem; font-weight: 400; color: rgba(255,255,255,0.65); max-width: 620px; margin-bottom: 2rem; line-height: 1.6; }
+
+    .hero-cta-row { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: linear-gradient(90deg, var(--navy), #132c4f);
+      color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85rem 1.75rem; text-decoration: none; transition: background 0.2s;
+    }
+    .hero-cta:hover { background: var(--blue2); }
+    .hero-cta-arrow { font-size: 1rem; transition: transform 0.2s; }
+    .hero-cta:hover .hero-cta-arrow { transform: translateX(4px); }
+
+    .hero-cta-outline {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: transparent; border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85rem 1.75rem; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .hero-cta-outline:hover { border-color: var(--signal); color: var(--signal); }
+
+    /* WHAT SECTION */
+    .what-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white); display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-label::after { content: ''; display: block; width: 40px; height: 2px; background: var(--signal); }
+
+    .what-headline { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--white); line-height: 1.2; max-width: 1000px; margin-bottom: 1.5rem; }
+    .what-headline strong { font-weight: 700; }
+    .what-body { font-size: 0.95rem; color: var(--mid); line-height: 1.75; max-width: 760px; margin-bottom: 2.5rem; }
+
+    .stats-row { display: flex; gap: 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule); }
+    .stat-item { flex: 1; padding: 1.5rem 2rem; border-right: 1px solid var(--rule); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+    /* CAPABILITIES / FEATURES */
+    .cap-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--navy); margin-top: 2rem; }
+    .cap-card { padding: 3rem; min-height: 300px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); text-decoration: none; transition: background 0.2s; display: flex; flex-direction: column; }
+    .cap-card:nth-child(3n) { border-right: none; }
+    .cap-card:hover { background: var(--off); }
+    .cap-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.75rem; }
+    .cap-name { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; line-height: 1.3; }
+    .cap-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .cap-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-top: 1.5rem; transition: gap 0.2s; }
+    .cap-card:hover .cap-link { gap: 0.7rem; }
+
+    /* DOWNLOAD SECTION */
+    .download-band { background: var(--navy); padding: 5rem 2rem; }
+    .download-inner { max-width: 1200px; margin: 0 auto; }
+    .download-headline { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--white); line-height: 1.25; margin-bottom: 0.75rem; }
+    .download-headline strong { font-weight: 700; }
+    .download-sub { font-size: 0.95rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 3rem; max-width: 640px; }
+
+    .download-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .download-card {
+      background: var(--surface); border: 1px solid var(--border); padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .download-platform { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+    .download-title { font-size: 1.15rem; font-weight: 700; color: var(--white); }
+    .download-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; flex: 1; }
+
+    .download-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      background: var(--signal); color: var(--navy); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem 1.5rem;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .download-btn:hover { opacity: 0.88; }
+
+    .download-btn.disabled {
+      background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.4);
+      cursor: default; pointer-events: none;
+    }
+
+    .download-btn.outline {
+      background: transparent; border: 1px solid var(--signal); color: var(--signal);
+    }
+    .download-btn.outline:hover { background: rgba(0,200,150,0.08); opacity: 1; }
+
+    .download-note { margin-top: 2.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 640px; }
+    .download-note a { color: var(--signal); text-decoration: none; }
+    .download-note a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    .footer-top { background: var(--navy); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo-block { display: flex; align-items: center; gap: 0.75rem; }
+    .footer-logo-text { font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
+    .footer-links-grid { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .footer-col-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { font-size: 0.82rem; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { background: var(--navy); padding: 1rem 2rem 2rem; }
+    .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+    @media (max-width: 768px) {
+      .stats-row { flex-wrap: wrap; }
+      .stat-item { min-width: 50%; border-bottom: 1px solid var(--rule); }
+      .cap-grid { grid-template-columns: 1fr; }
+      .cap-card { border-right: none; }
+      .download-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-main">
+      <a class="nav-logo" href="index.html">
+        <img src="data:image/png;base64,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" width="36" height="36" alt="One Island Tech" style="display:block;" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">One Island Tech</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html#who">Who We Are <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="mission.html">Our Mission</a>
+            <a href="labs.html" class="labs-link">One Island Labs →</a>
+            <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
+          </div>
+        </li>
+        <li>
+          <a href="index.html#capabilities">What We Do <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="domains/land.html">T3E97</a>
+            <a href="domains/cyber-hollow.html">Hollow</a>
+            <a href="domains/cyber-mcneal.html">McNeal Protocol</a>
+          </div>
+        </li>
+        <li>
+          <a href="phantom.html" class="active">Phantom <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="phantom.html">Overview</a>
+            <a href="phantom.html#download">Download</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </li>
+      </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var h=document.getElementById('navHamburger'),p=document.getElementById('navMobilePanel');var open=h.classList.toggle('open');p.classList.toggle('open');h.setAttribute('aria-expanded',open);">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-right"></div>
+    </div>
+    <div class="nav-mobile-panel" id="navMobilePanel">
+      <a href="index.html#who">Who We Are</a>
+      <a class="sub" href="mission.html">Our Mission</a>
+      <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
+      <a href="index.html#capabilities">What We Do</a>
+      <a class="sub" href="domains/land.html">T3E97</a>
+      <a class="sub" href="domains/cyber-hollow.html">Hollow</a>
+      <a class="sub" href="domains/cyber-mcneal.html">McNeal Protocol</a>
+      <a href="phantom.html">Phantom</a>
+      <a class="sub" href="phantom.html#download">Download</a>
+      <a class="sub" href="privacy.html">Privacy Policy</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-label">One Island Tech · Free Mobile App</span>
+      <h1 class="hero-title">
+        Push to talk, <strong>over mesh radio.</strong>
+      </h1>
+      <p class="hero-sub">
+        Phantom is a free push to talk app for Meshtastic, sending fully offline,
+        end-to-end encrypted voice over LoRa mesh radio. No account, no servers, no cell
+        towers, no internet required. Your voice is transcribed, encrypted, and rebuilt
+        in your own cloned voice on the other end, entirely on-device.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#download" class="hero-cta">
+          Download Phantom
+          <span class="hero-cta-arrow">→</span>
+        </a>
+        <a href="domains/land.html" class="hero-cta-outline">How T3E97 Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT SECTION -->
+  <section class="what-section" id="about">
+    <div class="section-label">What It Is</div>
+    <h2 class="what-headline">
+      Voice over mesh, rebuilt for a world with <strong>no signal.</strong>
+    </h2>
+    <p class="what-body">
+      Meshtastic gives you a resilient, low-power LoRa radio mesh, but it was built for short
+      text packets, not voice communication. Phantom closes that gap as a push to talk app
+      for Meshtastic. Speak into your phone, and Phantom transcribes your voice on-device,
+      encrypts it, and sends it as text over your Meshtastic-compatible radio node. On the
+      receiving phone, Phantom decrypts the message and speaks it back in the original
+      sender's own cloned voice. No audio ever touches the airwaves, and no server ever
+      sees your data, making it a genuinely offline, encrypted alternative to cellular voice
+      calls when there's no signal at all.
+    </p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Cost, forever</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Servers involved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">On-device processing</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">E2E</div>
+        <div class="stat-label">Encrypted by default</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">16+</div>
+        <div class="stat-label">Countries reached organically</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="cap-section" id="features">
+    <div class="section-label">How It Works</div>
+    <h2 class="what-headline">Encrypted voice over mesh radio, in three steps.</h2>
+    <div class="cap-grid">
+
+      <div class="cap-card">
+        <div class="cap-tag">Step 1</div>
+        <div class="cap-name">Speak, and it's transcribed on-device</div>
+        <div class="cap-desc">
+          Hold to talk. Phantom captures and transcribes your voice locally on your phone,
+          nothing is uploaded anywhere while you speak.
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-tag">Step 2</div>
+        <div class="cap-name">Encrypted and sent over mesh radio</div>
+        <div class="cap-desc">
+          The transcript is encrypted and transmitted as text over your BLE-connected
+          Meshtastic node, routing hop to hop with no cell towers or internet required.
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-tag">Step 3</div>
+        <div class="cap-name">Rebuilt in your voice on arrival</div>
+        <div class="cap-desc">
+          The receiving phone decrypts the message and reconstructs it as speech in the
+          original sender's own cloned voice, fully offline, fully local.
+        </div>
+        <span class="cap-link">Read the full protocol →</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <div class="download-band" id="download">
+    <div class="download-inner">
+      <h2 class="download-headline">
+        Get <strong>Phantom</strong>
+      </h2>
+      <p class="download-sub">
+        Free on iOS today. Android is in active development, with the APK available directly
+        below for anyone who wants early access outside the Play Store.
+      </p>
+
+      <div class="download-grid">
+
+        <div class="download-card">
+          <div class="download-platform">iOS</div>
+          <div class="download-title">App Store</div>
+          <div class="download-desc">
+            Available now as "Phantom - Mesh Comms," the push to talk app for Meshtastic, on the App Store.
+          </div>
+          <a href="https://apps.apple.com/app/phantom-mesh-comms" class="download-btn" target="_blank" rel="noopener">
+            Download on the App Store
+          </a>
+        </div>
+
+        <div class="download-card">
+          <div class="download-platform">Android</div>
+          <div class="download-title">Google Play</div>
+          <div class="download-desc">
+            Coming soon. The Android build is in active development and testing.
+          </div>
+          <span class="download-btn disabled">Coming to Google Play</span>
+        </div>
+
+        <div class="download-card">
+          <div class="download-platform">Android</div>
+          <div class="download-title">Direct APK</div>
+          <div class="download-desc">
+            Want it now? Grab the latest APK directly, no Play Store account needed.
+          </div>
+          <a href="https://github.com/AntonioLambertTech/phantom-apk/releases/latest" class="download-btn outline" target="_blank" rel="noopener">
+            Download APK
+          </a>
+        </div>
+
+      </div>
+
+      <p class="download-note">
+        The direct APK isn't reviewed by an app store, so Android will warn you before installing
+        it, that's expected. Phantom needs a Meshtastic-compatible LoRa radio (such as a WisMesh Tag)
+        connected over Bluetooth to send and receive. Read the
+        <a href="privacy.html">Privacy Policy</a> for details on what Phantom does and doesn't do
+        with your data.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-top">
+    <div class="footer-inner">
+      <div class="footer-logo-block">
+        <span class="footer-logo-text">One Island Tech</span>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <div class="footer-col-title">Products</div>
+          <ul>
+            <li><a href="domains/land.html">T3E97</a></li>
+            <li><a href="domains/cyber-hollow.html">Hollow</a></li>
+            <li><a href="domains/cyber-mcneal.html">McNeal Protocol</a></li>
+            <li><a href="phantom.html">Phantom</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <ul>
+            <li><a href="labs.html">One Island Labs</a></li>
+            <li><a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Phantom</div>
+          <ul>
+            <li><a href="phantom.html#download">Download</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">&copy; 2026 One Island LLC. All rights reserved.</p>
+    </div>
+  </div>
+
+</body>
+</html>
