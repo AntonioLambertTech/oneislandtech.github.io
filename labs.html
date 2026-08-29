@@ -12,7 +12,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>One Island Labs</title>
+  <title>Infrastructureless Communications - One Island Labs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -142,19 +142,19 @@
     .nav-mobile-panel a.sub { padding-left: 2.25rem; font-weight: 500; text-transform: none; font-size: 0.8rem; opacity: 0.55; }
     .nav-mobile-panel a:active { opacity: 1; }
 
-    /* FULL PAGE LAYOUT */
+    /* PAGE LAYOUT & INFRASTRUCTURELESS CONTENT */
     .page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 104px 2.5rem 4rem;
+      padding: 120px 2.5rem 5rem;
       position: relative;
       overflow: hidden;
     }
 
-    /* Subtle starfield */
+    /* Constellation / Node Network Background Overlay */
     .page::before {
       content: '';
       position: absolute;
@@ -176,46 +176,105 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 700px;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
     .labs-label {
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(0,200,150,0.6);
-      margin-bottom: 3rem;
+      color: var(--signal);
+      margin-bottom: 2rem;
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(0, 200, 150, 0.08);
+      border: 1px solid rgba(0, 200, 150, 0.2);
+      border-radius: 20px;
     }
 
-    .labs-line1 {
-      font-size: clamp(1.5rem, 4vw, 2.8rem);
+    .labs-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .labs-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
       font-weight: 300;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
     }
 
-    .labs-line2 {
-      font-size: clamp(1.5rem, 4vw, 2.8rem);
+    .labs-description {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 3.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .labs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      text-align: left;
+      margin-bottom: 3.5rem;
+    }
+
+    .labs-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.75rem;
+      border-radius: 8px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .labs-card:hover {
+      border-color: rgba(0, 200, 150, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .labs-card-title {
+      font-size: 0.95rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .labs-card-text {
+      font-size: 0.825rem;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.55;
     }
 
     .labs-divider {
       width: 40px;
       height: 1px;
       background: rgba(0,200,150,0.4);
-      margin: 3rem auto;
+      margin: 2.5rem auto;
     }
 
     .labs-sub {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 850px) {
+      .labs-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
@@ -224,8 +283,6 @@
       .nav-partner-btn { display: none; }
       .nav-hamburger { display: flex; }
       .nav-mobile-panel { display: flex; }
-      .nav-links { display: none; }
-      .nav-utility { display: none; }
     }
   </style>
 </head>
@@ -234,10 +291,9 @@
   <nav>
     <div class="nav-main">
       <a class="nav-logo" href="index.html">
-        <img src="data:image/png;base64,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" alt="One Island LLC" />
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAOLElEQVR4nO1ba2wc13X+zr13dpcvkaJsUiIpkqL1oKhIsiNbEBS5CizHaQw3qGNsW7RNE/QBp7EbFAlSt3+suDViNIENFCkSGGhSFDbQ2EKCtElaJRYSM5YUJapchZUVWTJDkbtcipJSmSF3tbsz95z+mBlySJEUH7sSU+wHDLicx318c1733DNABRVUUEEFFVRQQQUVVFBBBRXcNtD/504pckhwTiK/l9qmDtrgSFsqODg4fq1BAMw81w38yS62TT3tBBEOHjyoiAhEt1YQb0lvIqI6Ojo616xZ05jP523h3cIvL45eHGKeFBCN6VI0F0LJwn333bdmdHT0Ydd1DxDRFs/zGpRSBa31JaXUiVhMfa+h4Y7/OnXqlLeAdpeMchFIALB58+YtExMTnxbm97PIBqWUERawcF5rfZ6I/nPVqlVfO3fu3PnguUmCZoEGYHt6emrHxsY+y8yPi0iziEBEpkmeUgQSZOJVVZ8YGBj4TjCesqjzYtVnoQhncwcBNZa5TUTI8+xVFhYACWvtDmvtU9euXTvd1tLy+WQyGYM/ydnGZADYjRs37rl27dpPrLVPW2ubmdmKiAfAisgVo9SPlaITjhP76J3x5m0D9977H5iykWWdaFmxsbW1TRKJ92Sz2a8x87rIJQ+AUYoA0NF4PJ4cHBy8hOmSqAHYtra23/Zc918ZSMAnTYfjFxEopRA35qOpzPDLMqWwCst3VvOi3AQq+BN1RYQ2dHT8Rb5YfIGZx40xWc/zWuFPziMih4jeampqeqCvr+8Kpry27erqeiCbzX5PRAwAG7QJInIBCBHlHcf5q1Qq9SIRQeQGvsLnSk5kOQmMhhiT2L59e1tuPPdAvpj/e9dz1wb3kIi4SilHKfX6vn37Hjx06BAAcHd399qxsbHT1tomTJEnIoJ4PD5UV1d32HXdX+VyuQkR2WGMqXFdN2OM+bkx5mR3d/eJw4cPFyJjsqWcZDkInOYI7t54950Fp9A1Pj6+znXdNfF4fEBrrYv5/JMe8wdFxMGU3XOVIscY56l0Ov0FIkJLS8sr1trfYWYPs4REIsJEpEInEqpz+JuIzsdisa+2tbV95fjx4+MoMYmlJlADsESE9vb2j3jF4scsy/uIsEYwOSEwc9EYc46ZO5i5HoEUIiCeiCbWrOluzWYvbiwUCv8tIlZE9Cz9hc8Bvj0N5ySR3zog9LxS6olMJnME/ovwUAKUkkANwG7YsOG+QqHwPDPfDxGwb4+YiER843RDIDwDnlLKOI7zcbG222P+67mkbxZIIIkUsYMc9G8AQGv9RCaT+TJKRGKpCDQAvLa2tj92XffLAOIiElWTmYSFnjF0FFEwANJan2TmehHZgrnDm2hblogcAQARF4DSWqeYuR2+zbQAVPByPpFKpV5ECUgsRRyoAXgdHev/3PO8r4pITKbCDEVEWmv9DoDrmJqsBH3P9gIVALLW7g7Im2uck2pKREpp7SRise8q0Kgi5SilNICJRCLxPBFpIooRkWFmcV33S11dXfvgkzefNtwUy5VADcB2dbUfyGXzR0RgBdCBrSuAKK6IfhCPx8/k8/lPBWolAEiRyrFwAvNLFs1cZUSQdRxnWJG67nnuFVJqsLq6+lvGmPNj18YecuLOCDNze3v7kcHBwc8CuCcej1/KZbOPEanVAh66++57Nh8+fLgY6W/RWA6BBIB2795dm06n+6y16+G/0aLR5n+tte1EQN2qVbvHx8f/QQQ9BICF6zXRMeM4lwvF4qMi4hGRmSV2WwhEkZrQpE47idjzFy9e/Ld5B0yErq6ubYVC4WHP857USn19OJN5CstQ5eWosAbAIyPDn7bWdgAgpVTMGPOT1fWrnjPafK6mtvb9zz777JstLS2PrV3bvGlD14Yex3F2/9njjz+QMOZztdXVX6iKJX4mLNEgd66llw2O6DVi4TpP7P35fP5brevWvrZlS0cnAPT09MQwtVoxAJSIUH9//1vpdPqLnZ2d3TVVVW8+8siuaizDDi5VAgmA7N69e1VqaPC8gJrBkjYx55+qqqpeunDhwi/me7i9peWAy/yXLLJXRFZHxmFBvgkASAggCPKkKBGuMAJJtcEz0aUaE5FRSg06jvPw0NDQWcyenAjzhSUJY5Ykgfv379cAMJJOPwpSzVrrF1Y11N+TTqefCchT8N96aKA1AOzatan+paXlpaK1R1jkERFpxFTcZomUJlLDmtQ5wFc5xzEvV1dX7zRk/tQo9aomPaiIdNCHR76BJABGRFxm7nCLxcM7d24Kl4kz58jwyaNZri0aS5VABQCtra0vQqN3eGj45eC8wY2ZYAWAd+zY0fTLq1e+a5nvZZ4McTQBLIAiELTR32hsbHwiPz6+YTyff0MgRit9cmRkZHfY2N69e+vSA4OfdMU+LiIOKXWOmR8UkSKAGEBWKdJa4bXhzKWHUIblWxTLcSJ6/fr1zalUKoO5E6IEQO3Zk4wNDh79gYjsYWYXgAOAQYAC9WllfiUir2UuZZ4NH2xZu/ZLVuRJiOQaVq/e9vbbb6eD9lwA2N/TUzswMbHTcZxYkGhwAvUuADBKKe0o5/dSmdQrKOHKYyaWI8I2Qt5cmQ4FwKbTxz4/gzyIH/gqAbJ79+39zYA8Cow/kdYnAQBE1cVcbjt8AiZXMr1nz04MDQ0d6+/v/2FdXd1OY+iLWusLiUTimwAURKxn3b9JJp3hyy0LlhsHRtedM6EA8F133bUtOzHxs2AtrOAHvgAIiuhCfUP9R86dO3cGU1KiAdj29vZHCoXCtwFAa/10JpP5O0yXpOgmlQDAvn37Vo+MjGzNTmSPiQigIPFYfN/Q0NBxlEmVl2tE5wveFABcv577FHyjz/AndNXG/EgRzjfWNB4IyIt6xWA1JpfC38z8nln6i+7GKQDm6NGj1/r7+4/HE/HHALmiSBGzdyC4vyypu3Km9L0P7NhRwyy/FdgmB36oUZNIJJ67s6np/rf630phyn5OQ3V19TgCiRGRzQcPHgxDktmImOZZBwcHv1ldU7OPWIbY2geDe8qSlS4XgQoABsbGthOwDgBE5CoRKa3QW1NT80ZfX99lzKNWruteF5ZiMOvWl156qQ43J0EA8K5dcAYGBs5XOeaAMXriAzt21GAqdiwpykLg/v37CQBcazcIABCEiI4aY/52Vf3qx/r6+rK4iU1yx8Y8kkAyRVZzPr82uHRTEk6dggtA96fT7zSuafr46NSlkkvhQnJsi0Zvby8AwDISEN9rsDAPDw8fRGSvY742mjo7JTM8LB5bKKUNxePrAbyNhUuRBaBOnz59ZekzuTnKpcIAACKx/gpM3Kqqqn8EoIJVzE0lobm5WUgpQPxMdm58/I6w2UUMYS6bWTKUS4UBAFo5Y0REjuO8MDg4+EMA1Nvbu6CAdnR0lISZEGSZnVhsvd/2oodTti1NoEwE9vb2MgBY2GEILnc3Nz+HqYX/gjAwMKA8z1Jkm7LVb7scI146yqXCAgD19fWpeCzxySOnTo0F5xe8IlidSCiKZFKZubbEYywJyuJEEBB45syZUQDfwBJqU+JVDfEJ72pMguWbx7Yp2vZKQVmdSKSPRU86Z3M18HfSRETgaH1HIJArqubvVhC4qAknk8kwzAnjPgEAj209P/10+DJuSzXqbLgVBC4Kly9fJgDCzLWBxAWxOBKPj4wsawetHFhpBKre3l7etm3b+6xnP8TMUdWPnzhxInbbRjYHVhpBBIAOXbw4e0f12L1XmAn111aP//YInX3m/92H6mD0d4J2Yh/3/X1v3/10XvX9A96/fX8c3S0AAAAAElFTkSuQmCC" alt="One Island LLC" />
         <div class="nav-logo-text">
           <span class="nav-logo-name">One Island Tech</span>
-          <!-- <span class="nav-logo-sub">Communication Infrastructure</span> -->
         </div>
       </a>
       <ul class="nav-links">
@@ -269,11 +325,9 @@
       <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var h=document.getElementById('navHamburger'),p=document.getElementById('navMobilePanel');var open=h.classList.toggle('open');p.classList.toggle('open');h.setAttribute('aria-expanded',open);">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-right">
-     <!--   <a href="mailto:contact@oneislandtech.com" class="nav-partner-btn">Partner Inquiry &#8594;</a> -->
-      </div>
+      <div class="nav-right"></div>
     </div>
-      <div class="nav-mobile-panel" id="navMobilePanel">
+    <div class="nav-mobile-panel" id="navMobilePanel">
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
@@ -290,11 +344,34 @@
 
   <div class="page">
     <div class="labs-content">
-      <p class="labs-label">One Island Labs</p>
-      <p class="labs-line1">The physics have not been exhausted.</p>
-      <p class="labs-line2">The biology has barely been touched.</p>
+      <span class="labs-label">One Island Labs - Active Research</span>
+      
+      <h1 class="labs-title">Infrastructureless Comms</h1>
+      <p class="labs-tagline">Communication without central authority, cell towers, or backhauls.</p>
+      
+      <p class="labs-description">
+        Traditional networks rely on fragile, centralized towers and cloud servers. 
+        One Island Labs designs decentralized, serverless communication protocols that allow devices 
+        to form spontaneous, resilient, and encrypted mesh networks directly over physical radio and local links.
+      </p>
+
+      <div class="labs-grid">
+        <div class="labs-card">
+          <h3 class="labs-card-title">Zero Cell Rely</h3>
+          <p class="labs-card-text">Direct peer-to-peer data transport operating completely independent of commercial telecommunication grids and cellular networks.</p>
+        </div>
+        <div class="labs-card">
+          <h3 class="labs-card-title">Ad-Hoc Mesh Routing</h3>
+          <p class="labs-card-text">Autonomous network formation that dynamically routes data across participating nodes without static infrastructure or central coordination.</p>
+        </div>
+        <div class="labs-card">
+          <h3 class="labs-card-title">Sovereign Encryption</h3>
+          <p class="labs-card-text">End-to-end cryptographic privacy engineered to remain secure in hostile, denied, or contested electromagnetic environments.</p>
+        </div>
+      </div>
+
       <div class="labs-divider"></div>
-      <p class="labs-sub">Active Research &nbsp;&nbsp; One Island Tech</p>
+      <p class="labs-sub">Resilient Engineering &nbsp;&bull;&nbsp; One Island Tech</p>
     </div>
   </div>
 
