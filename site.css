@@ -1346,3 +1346,18 @@ body > .page-hero .hero-title strong { color: #f1f3ef !important; }
 
 /* Phantom page: show the Phantom logo in the nav instead of the white one-color treatment. */
 nav .nav-logo img[alt="Phantom"] { filter: none !important; opacity: 1 !important; border-radius: 7px; border: 1px solid rgba(255,255,255,.18); }
+
+/* Phantom download buttons use each store's brand color. */
+.phantom-page .download-btn.download-btn-apple { background: #0071e3 !important; color: #fff !important; }
+.phantom-page .download-btn.download-btn-apple:hover { background: #0a84ff !important; }
+.phantom-page .download-btn.download-btn-google { background: #01875f !important; color: #fff !important; }
+.phantom-page .download-btn.download-btn-google:hover { background: #0aa171 !important; }
+
+/* Footer: no extra full-width rule above the copyright strip. */
+body .footer-bottom { border-top: 0 !important; }
+body .footer-inner, body.warfighter-page .footer-inner, .warfighter-page .footer-inner { border-bottom: 0 !important; }
+.labs-page-footer { border-top: 0 !important; }
+
+/* Warfighter: match the uppercase brand name used on the other pages. */
+.warfighter-page nav .nav-logo-name { text-transform: uppercase; }
+.warfighter-page nav .nav-links > li > a { text-transform: uppercase; }
