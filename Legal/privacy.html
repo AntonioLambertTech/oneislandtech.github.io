@@ -27,7 +27,7 @@
       --border:  #1C1C1C;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
     body {
       background: var(--bg);
@@ -133,7 +133,10 @@
       margin-bottom: 1rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--rule);
+      scroll-margin-top: 96px;
     }
+
+    .doc-body h2:target { border-bottom-color: #aeb9a4; }
 
     .doc-body h2:first-child { margin-top: 0; }
 
@@ -179,29 +182,58 @@
     .callout p { margin-bottom: 0; font-size: 0.88rem; color: rgba(232,236,240,0.75); }
 
     .toc {
-      background: var(--off);
-      border: 1px solid var(--rule);
-      padding: 1.5rem 1.75rem;
-      margin-top: 2rem;
+      background: #090d13;
+      border: 1px solid #252a34;
+      padding: 1.4rem 1.5rem;
+      margin: 2rem 0 2.75rem;
     }
 
     .toc-title {
-      font-size: 0.7rem;
+      font-size: 0.67rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 0.85rem;
+      color: #aeb9a4;
+      margin-bottom: 1rem;
     }
 
     .toc ol {
-      margin-left: 1.1rem;
-      color: var(--white);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .35rem 1.5rem;
+      list-style: none;
+      counter-reset: toc;
     }
 
-    .toc li { font-size: 0.88rem; margin-bottom: 0.45rem; }
-    .toc a { color: rgba(232,236,240,0.85); }
-    .toc a:hover { color: var(--blue); }
+    .toc li { min-width: 0; counter-increment: toc; }
+    .toc a {
+      min-height: 2.4rem;
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr);
+      align-items: center;
+      gap: .6rem;
+      padding: .35rem .45rem;
+      color: rgba(232,236,240,.82);
+      font-size: .82rem;
+      line-height: 1.4;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: color .18s ease, background-color .18s ease;
+    }
+    .toc a::before {
+      content: counter(toc, decimal-leading-zero);
+      color: #7f897d;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .toc a:hover { color: #f1f3ef; background: rgba(255,255,255,.035); }
+    .toc a:focus-visible { outline: 2px solid #aeb9a4; outline-offset: 2px; }
+
+    @media (max-width: 560px) {
+      .toc { padding: 1rem; }
+      .toc ol { grid-template-columns: 1fr; gap: .1rem; }
+    }
 
     /* FOOTER - same as homepage */
     .footer-top { background: var(--navy); padding: 3rem 2rem 2rem; }
@@ -217,6 +249,7 @@
     .footer-bottom-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
   </style>
+  <link rel="stylesheet" href="../site.css" />
 </head>
 <body>
 
@@ -233,6 +266,7 @@
           <div class="nav-dropdown">
             <a href="../mission.html">Our Mission</a>
             <a href="../labs.html">One Island Labs →</a>
+            <a href="../warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -264,6 +298,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="../warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>

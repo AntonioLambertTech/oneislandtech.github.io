@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="McNeal Protocol derives message keys with an X25519 key agreement and double ratchet, encodes messages using a keyed tone alphabet, and authenticates frames with ChaCha20-Poly1305." />
   <title>McNeal Protocol, One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -193,8 +194,9 @@
       .who-cards { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="../site.css" />
 </head>
-<body>
+<body class="mcneal-page">
   <nav>
     <div class="nav-main">
       <a class="nav-logo" href="../index.html">
@@ -210,6 +212,7 @@
           <div class="nav-dropdown">
             <a href="../mission.html">Our Mission</a>
             <a href="../labs.html">One Island Labs</a>
+            <a href="../warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -241,6 +244,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="../warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
@@ -251,73 +255,73 @@
       <a class="sub" href="Legal/privacy.html">Privacy Policy</a>
     </div>
   </nav>
-  <section class="hero" style="min-height:45vh;">
-    <div class="hero-bg" style="background: linear-gradient(to bottom, rgba(5,15,35,0.1) 0%, rgba(5,15,35,0.88) 100%), linear-gradient(135deg, #001A10 0%, #003828 60%, #000F08 100%);">
-      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,200,150,0.06) 1px, transparent 1px),linear-gradient(90deg, rgba(0,200,150,0.06) 1px, transparent 1px);background-size:48px 48px;"></div>
-    </div>
-    <div class="hero-content">
-      <p class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; McNeal Protocol</p>
-      <span class="hero-eyebrow">Encryption Infrastructure</span>
-      <h1 class="hero-title" style="font-size:clamp(1.8rem,4vw,3rem);">McNeal Protocol</h1>
-      <p class="hero-sub">Per-message encryption where compromising one communication reveals nothing about any other. Built from scratch as an alternative to session-based encryption.</p>
-      <!-- <span class="status-pill status-live">Patent Pending</span> -->
+  <section class="hero mcneal-hero">
+    <div class="hero-bg"></div>
+    <div class="mcneal-hero-inner">
+      <div class="mcneal-hero-copy">
+        <p class="breadcrumb"><a href="../index.html">Home</a> / McNeal Protocol</p>
+        <span class="hero-eyebrow">Encryption / Message-level</span>
+        <h1 class="hero-title">McNeal Protocol</h1>
+        <p class="mcneal-hero-subtitle">A separate encryption key for each message.</p>
+        <p class="hero-sub">McNeal combines X25519 key agreement, double-ratchet key derivation, and ChaCha20-Poly1305 authenticated encryption. Its send and receive paths are documented below.</p>
+        <a class="mcneal-hero-link" href="#send-pipeline">See protocol flow <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="mcneal-facts" aria-label="McNeal Protocol cryptographic components">
+        <div><span>KEY AGREEMENT</span><b>X25519</b></div>
+        <div><span>KEY DERIVATION</span><b>Double ratchet</b></div>
+        <div><span>AUTHENTICATED ENCRYPTION</span><b>ChaCha20-Poly1305</b></div>
+      </div>
     </div>
   </section>
 
-
-  <div class="content-wrap" style="padding: 3rem 2.5rem 0;">
-  <div style="max-width: 720px; margin: 0 auto 2.5rem; text-align: center;">
-    <p class="section-label" style="justify-content: center;">How It Works</p>
-    <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">
-Every McNeal message begins with a fresh key. An ephemeral X25519 handshake derives a 32-byte root key, which feeds a double ratchet that produces a unique per-message key for each message sent. That key does double duty: it encrypts the payload and generates a one-time frequency alphabet, so the same word maps to entirely different tones from one message to the next. The text is encoded into that tone set, rendered to audio, and only then sealed with ChaCha20-Poly1305 - encryption wrapped around a signal that was already unreadable without the right per-message alphabet. The result is packed into a compact binary frame and sent. Two independent layers, compounding rather than repeating: break one and there's still nothing to read.    </p>
-  </div>
-  <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../mcneal_protocol_send_pipeline.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
-  </div>
-</div>
-
-
-  <div class="content-wrap" style="padding: 3rem 2.5rem 0;">
-  <div style="max-width: 720px; margin: 0 auto 2.5rem; text-align: center;">
-    <p class="section-label" style="justify-content: center;">How It Works</p>
-    <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">
-Receiving reverses the pipeline, but with hard guards at every step. An incoming frame is validated by its magic bytes and version before anything else touches it. A 256-slot sliding replay window then checks the sequence number - duplicates and stale frames are dropped before a single cryptographic operation is wasted. Because packets can arrive out of order, the session resolves the correct per-message key either from cache or by advancing the ratchet forward, stashing any keys it passes along the way. Only then is the frame opened and authenticated, its header verified as part of the cipher itself so no byte can be tampered with in transit. Fragments are reassembled, and the tones are decoded back to text using the exact same alphabet the sender derived: reconstructable only by the holder of the matching key.</p>
-  </div>
-  <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../mcneal_protocol_receive_pipeline.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
-  </div>
-</div>
-
-  <!-- WHAT IT IS -->
-  <div class="content-wrap" style="padding: 5rem 2.5rem;">
-    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-      <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; opacity: 0.5;">What makes it different</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">Per-Message Keys</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">Every message is independently keyed. Compromise of one reveals nothing about any other. No shared session state.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">No Session to Intercept</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">No key exchange to replay. No session to hijack. No shared state to compromise. Each message exists independently.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">Post-Quantum Oriented</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">Designed without assumptions about classical compute limits. The encryption posture does not change when quantum threats arrive.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:#050505; border-top: 1px solid var(--border); padding: 4rem 2.5rem;">
-    <div style="max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem;">
+  <main class="mcneal-main">
+    <section class="mcneal-intro">
+      <p class="mcneal-label">Protocol overview</p>
       <div>
-        <h2 style="font-size:1.5rem; font-weight:300; color:var(--white); margin-bottom:0.5rem;">Ready to evaluate <strong>McNeal Protocol</strong>?</h2>
-        <p style="font-size:0.9rem; color:rgba(255,255,255,0.45); max-width:440px; line-height:1.65;">Integration partnerships and technical evaluations available now.</p>
+        <h2>Message-key derivation and payload protection are distinct steps.</h2>
+        <p>An ephemeral X25519 exchange and HKDF establish root key material. A double ratchet then derives message keys, including handling for packets that arrive out of order.</p>
+        <p>The message key feeds authenticated encryption and the keyed tone-encoding layer. The diagrams show how these parts fit into the sending and receiving pipelines.</p>
       </div>
-      <a href="../contact.html" style="display:inline-flex; align-items:center; gap:0.75rem; background:var(--blue); color:#fff; font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 1.75rem; text-decoration:none;">Get In Touch &#8594;</a>
-    </div>
-  </div>
+    </section>
+
+    <section class="mcneal-pipeline" id="send-pipeline">
+      <div class="mcneal-section-heading">
+        <p class="mcneal-label">Send / 01</p>
+        <h2>Build and seal the outgoing frame.</h2>
+      </div>
+      <figure class="mcneal-diagram">
+        <img src="../mcneal_protocol_send_pipeline.png" alt="McNeal Protocol send pipeline: X25519 key agreement, double-ratchet message key, keyed tone alphabet, tone encoding, fragmentation, ChaCha20-Poly1305 sealing, and frame construction" />
+        <figcaption><span>FIG. 01</span> Send pipeline</figcaption>
+      </figure>
+    </section>
+
+    <section class="mcneal-pipeline mcneal-receive">
+      <div class="mcneal-section-heading">
+        <p class="mcneal-label">Receive / 02</p>
+        <h2>Check the frame before decoding.</h2>
+      </div>
+      <figure class="mcneal-diagram">
+        <img src="../mcneal_protocol_receive_pipeline.png" alt="McNeal Protocol receive pipeline: frame validation, replay-window check, message-key resolution, authenticated decryption, fragment reassembly, and tone decoding" />
+        <figcaption><span>FIG. 02</span> Receive pipeline</figcaption>
+      </figure>
+    </section>
+
+    <section class="mcneal-details">
+      <p class="mcneal-label">Implementation details</p>
+      <dl>
+        <div><dt>Key agreement</dt><dd>Ephemeral X25519 exchange with HKDF-derived root key.</dd></div>
+        <div><dt>Message keys</dt><dd>Double-ratchet key derivation, with message-key handling for out-of-order packets.</dd></div>
+        <div><dt>Payload encryption</dt><dd>ChaCha20-Poly1305 authenticated encryption.</dd></div>
+        <div><dt>Encoding layer</dt><dd>Message-key-derived tone alphabet, followed by framing and optional fragmentation.</dd></div>
+        <div><dt>Replay handling</dt><dd>Sliding sequence window rejects duplicate and stale frames.</dd></div>
+      </dl>
+      <p class="mcneal-caveat">McNeal currently uses X25519 for key agreement and ChaCha20-Poly1305 for authenticated encryption. It is not post-quantum cryptography.</p>
+    </section>
+    <section class="mcneal-contact">
+      <div><p class="mcneal-label">Technical evaluation</p><h2>Discuss the protocol with One Island.</h2></div>
+      <a href="../contact.html" class="mcneal-contact-link">Contact us <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
 
   <div class="footer-top">
     <div class="footer-inner">
@@ -354,11 +358,5 @@ Receiving reverses the pipeline, but with hard guards at every step. An incoming
     </div>
   </div>
 
-</body>
-</html>
-
-
-</body>
-</html>
 </body>
 </html>

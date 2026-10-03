@@ -61,19 +61,29 @@
     .nav-mobile-panel a:active { opacity: 1; }
 
     /* PAGE HEADER */
-    .page-header { margin-top: 70px; background: #050505; padding: 4rem 2.5rem; }
-    .page-header-inner { max-width: 1100px; margin: 0 auto; }
-    .breadcrumb { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
-    .breadcrumb a { color: rgba(255,255,255,0.45); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--white); }
-    .page-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.75rem; }
-    .page-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--white); line-height: 1.15; }
-    .page-title strong { font-weight: 700; }
-    .page-sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; max-width: 560px; line-height: 1.65; }
 
     /* MAIN CONTENT */
     main { flex: 1; }
     .content-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
+
+    /* HERO */
+    .page-hero { position: relative; margin-top: 70px; background: #050505; padding: 5rem 2.5rem; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(2px 2px at 90% 70%, rgba(0,200,150,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 70%, rgba(255,255,255,0.2) 0%, transparent 100%); }
+    .hero-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--signal); margin-bottom: 1rem; display: block; }
+    .hero-title { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-title strong { font-weight: 700; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 680px; }
 
     /* CONTACT CARDS */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--border); border-top: 1px solid var(--border); }
@@ -121,9 +131,9 @@
       .nav-mobile-panel { display: flex; }
       .nav-links { display: none; }
       .nav-utility { display: none; }
-      .page-header { margin-top: 70px; }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
@@ -142,6 +152,7 @@
           <div class="nav-dropdown">
             <a href="mission.html">Our Mission</a>
             <a href="labs.html">One Island Labs</a>
+            <a href="warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -151,6 +162,14 @@
             <a href="domains/land.html">T3E97</a>
             <a href="domains/cyber-hollow.html">Hollow</a>
             <a href="domains/cyber-mcneal.html">McNeal Protocol</a>
+          </div>
+        </li>
+        <li>
+          <a href="phantom.html">Phantom <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="phantom.html">Overview</a>
+            <a href="phantom.html#download">Download</a>
+            <a href="Legal/privacy.html">Privacy Policy</a>
           </div>
         </li>
       </ul>
@@ -165,89 +184,80 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
       <a class="sub" href="domains/cyber-hollow.html">Hollow</a>
       <a class="sub" href="domains/cyber-mcneal.html">McNeal Protocol</a>
+      <a href="phantom.html">Phantom</a>
+      <a class="sub" href="phantom.html#download">Download</a>
+      <a class="sub" href="Legal/privacy.html">Privacy Policy</a>
     </div>
   </nav>
 
-  <div class="page-header">
-    <div class="page-header-inner">
+  <div class="page-hero">
+    <div class="hero-inner">
       <p class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</p>
-      <p class="page-eyebrow">One Island Tech</p>
-      <h1 class="page-title">Get <strong>In Touch</strong></h1>
-      <p class="page-sub">We work with defense organizations, research institutions, aerospace partners, and accessibility innovators. Reach out directly.</p>
+      <span class="hero-eyebrow">Contact</span>
+      <h1 class="hero-title">Get <strong>in touch.</strong></h1>
+      <p class="hero-sub">We work with defense organizations, research institutions, satellite and radio network operators, and accessibility innovators exploring communication beyond the cellular network. Reach out directly.</p>
     </div>
   </div>
 
-  <main>
-    <div class="content-wrap">
-
-      <!-- CONTACT CARDS -->
-      <div class="contact-grid">
-
-        <div class="contact-card">
-          <div class="contact-card-icon">&#9993;</div>
-          <div class="contact-card-label">Email, Support</div>
-          <div class="contact-card-title">Support & General Inquiries</div>
-          <div class="contact-card-value">
-            <a href="mailto:support@oneislandtech.com">support@oneislandtech.com</a>
+  <main class="contact-page">
+    <section class="contact-section">
+      <p class="mission-kicker">Reach us</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <p class="contact-row-label">Email, Support</p>
+          <div>
+            <h2><a href="mailto:support@oneislandtech.com">support@oneislandtech.com</a></h2>
+            <p>For technical questions, product inquiries, and general information. We respond within 1 business day.</p>
           </div>
-          <div class="contact-card-note">For technical questions, product inquiries, and general information. We respond within 1 business day.</div>
         </div>
-
-        <div class="contact-card">
-          <div class="contact-card-icon">&#9742;</div>
-          <div class="contact-card-label">Phone</div>
-          <div class="contact-card-title">Direct Line</div>
-          <div class="contact-card-value">
-            <a href="tel:+12515332769">(251) 533-2769</a>
+        <div class="contact-row">
+          <p class="contact-row-label">Phone</p>
+          <div>
+            <h2><a href="tel:+12515332769">(251) 533-2769</a></h2>
+            <p>Available during business hours. For urgent defense or partnership inquiries, call directly.</p>
           </div>
-          <div class="contact-card-note">Available during business hours. For urgent defense or partnership inquiries, call directly.</div>
         </div>
-
-        <div class="contact-card">
-          <div class="contact-card-icon">&#128279;</div>
-          <div class="contact-card-label">LinkedIn</div>
-          <div class="contact-card-title">One Island Tech</div>
-          <div class="contact-card-value">
-            <a href="https://www.linkedin.com/company/oneislandtech" target="_blank">linkedin.com/company/oneislandtech</a>
-          </div>
-          <div class="contact-card-note">Follow for updates on development milestones, patent filings, and partnership announcements.</div>
-        </div>
-
-      </div>
-
-      <!-- INQUIRY TYPES -->
-      <div class="inquiry-section">
-        <p class="section-label">Inquiry types we handle</p>
-        <div class="inquiry-grid">
-          <div class="inquiry-card">
-            <div class="inquiry-title">Defense &amp; Government Partnership</div>
-            <div class="inquiry-body">DARPA, AFWERX, ONR, SBIR programs, prime contractor integration, field testing, and classified division inquiries.</div>
-          </div>
-          <div class="inquiry-card">
-            <div class="inquiry-title">Research Collaboration</div>
-            <div class="inquiry-body">University partnerships, joint research proposals, NASA SBIR follow-on, and underwater or through-ground comms research.</div>
-          </div>
-          <div class="inquiry-card">
-            <div class="inquiry-title">Accessibility &amp; Medical</div>
-            <div class="inquiry-body">Voice banking for ALS or laryngectomy patients, voice identity transformation, and healthcare communication applications.</div>
-          </div>
-          <div class="inquiry-card">
-            <div class="inquiry-title">Enterprise Licensing</div>
-            <div class="inquiry-body">McNeal Protocol API licensing, T3E97 integration, metadata-silent communication for legal, financial, or executive use cases.</div>
-          </div>
-          <div class="inquiry-card">
-            <div class="inquiry-title">Technical Support</div>
-            <div class="inquiry-body">Demo requests, integration questions, SDK access, and developer onboarding for the McNeal Protocol API.</div>
+        <div class="contact-row">
+          <p class="contact-row-label">LinkedIn</p>
+          <div>
+            <h2><a href="https://www.linkedin.com/company/oneislandtech" target="_blank">linkedin.com/company/oneislandtech</a></h2>
+            <p>Follow for updates on development milestones, patent filings, and partnership announcements.</p>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <section class="contact-section">
+      <p class="mission-kicker">Inquiry types we handle</p>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <h3>Defense &amp; Government Partnership</h3>
+          <p>Defense and intelligence programs, prime contractor integration, and field testing of Phantom, T3E97, and Hollow where conventional networks are unavailable.</p>
+        </div>
+        <div class="contact-row">
+          <h3>Research Collaboration</h3>
+          <p>University partnerships, joint research proposals, and transport research with One Island Labs across mesh radio, satellite links, and other constrained channels.</p>
+        </div>
+        <div class="contact-row">
+          <h3>Accessibility &amp; Medical</h3>
+          <p>Voice banking for ALS or laryngectomy patients, voice identity preservation, and healthcare communication applications built on T3E97.</p>
+        </div>
+        <div class="contact-row">
+          <h3>Enterprise Licensing</h3>
+          <p>T3E97 and McNeal Protocol licensing, integration with satellite, radio, and mesh platforms, and protected communication for legal, financial, or executive use cases.</p>
+        </div>
+        <div class="contact-row">
+          <h3>Technical Support</h3>
+          <p>Demo requests, Phantom support, integration questions, and developer onboarding for T3E97 and the McNeal Protocol.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div class="footer-top">
@@ -270,7 +280,6 @@
           <ul>
             <li><a href="mission.html">Mission</a></li>
             <li><a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a></li>
-            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
       </div>

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Phantom is a free push to talk app for Meshtastic. Send encrypted voice over mesh radio with no cell service, no internet, and no cloud, rebuilt in your own voice on the other end. Available on iOS and Android." />
+  <meta name="description" content="Phantom is a push-to-talk voice messaging app over mesh. It transcribes speech on-device, sends encrypted text over the radio, and reconstructs speech on the receiving phone. Currently available for Meshtastic, with MeshCore integration coming soon." />
   <meta name="keywords" content="push to talk meshtastic, voice over mesh, Meshtastic voice app, encrypted voice mesh radio, offline voice messaging, LoRa voice communication, mesh radio app, off grid communication app, voice calls no cell service, Meshtastic PTT" />
-  <meta property="og:title" content="Phantom — Push to Talk Over Mesh Radio" />
-  <meta property="og:description" content="Free, offline, encrypted voice over Meshtastic LoRa mesh. No cell service, no cloud, no servers." />
+  <meta property="og:title" content="Phantom | Push to Talk Over Mesh Radio" />
+  <meta property="og:description" content="On-device speech recognition, encrypted text over mesh, and speech playback on the receiving phone. Meshtastic now, MeshCore coming soon." />
   <meta property="og:type" content="website" />
-  <title>Phantom - Push to Talk Over Mesh Radio | One Island Tech</title>
+  <title>Phantom | Voice Messaging over Mesh | One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -244,8 +244,9 @@
       .hero-title { font-size: 1.8rem; }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="phantom-page">
 
   <nav>
     <div class="nav-main">
@@ -263,6 +264,7 @@
           <div class="nav-dropdown">
             <a href="mission.html">Our Mission</a>
             <a href="labs.html" class="labs-link">One Island Labs →</a>
+            <a href="warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -292,6 +294,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
@@ -303,106 +306,52 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
+  <section class="hero phantom-hero">
     <div class="hero-bg"></div>
-    <div class="hero-content">
-      <span class="hero-label">One Island Tech · Free Mobile App</span>
-      <h1 class="hero-title">
-        Push to talk, <strong>over mesh radio.</strong>
-      </h1>
-      <p class="hero-sub">
-        Phantom is a free push to talk app for Meshtastic, sending fully offline,
-        end-to-end encrypted voice over LoRa mesh radio. No account, no servers, no cell
-        towers, no internet required. Your voice is transcribed, encrypted, and rebuilt
-        in your own cloned voice on the other end, entirely on-device.
-      </p>
+    <div class="phantom-hero-inner">
+      <div class="phantom-hero-copy">
+        <p class="breadcrumb"><a href="index.html">Home</a> / Phantom</p>
+        <span class="hero-label">One Island / Mobile app</span>
+        <h1 class="hero-title">Voice messages<br />over <strong>mesh.</strong></h1>
+        <p class="hero-sub">Phantom turns speech into encrypted text for mesh radio. The receiving phone reconstructs the message as speech.</p>
       <div class="hero-cta-row">
         <a href="#download" class="hero-cta">
-          Download Phantom
+          Get Phantom
           <span class="hero-cta-arrow">→</span>
         </a>
-        <a href="domains/land.html" class="hero-cta-outline">How T3E97 Works</a>
+        <a href="domains/land.html" class="hero-cta-outline">About T3E97</a>
+      </div>
+      </div>
+      <div class="phantom-hero-facts" aria-label="Phantom requirements and processing">
+        <div><span>NETWORK</span><b>Meshtastic LoRa</b></div>
+        <div><span>CONNECTION</span><b>Bluetooth radio link</b></div>
+        <div><span>PROCESSING</span><b>On-device</b></div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT SECTION -->
-  <section class="what-section" id="about">
-    <div class="section-label">What It Is</div>
-    <h2 class="what-headline">
-      Voice over mesh, rebuilt for a world with <strong>no signal.</strong>
-    </h2>
-    <p class="what-body">
-      Meshtastic gives you a resilient, low-power LoRa radio mesh, but it was built for short
-      text packets, not voice communication. Phantom closes that gap as a push to talk app
-      for Meshtastic. Speak into your phone, and Phantom transcribes your voice on-device,
-      encrypts it, and sends it as text over your Meshtastic-compatible radio node. On the
-      receiving phone, Phantom decrypts the message and speaks it back in the original
-      sender's own cloned voice. No audio ever touches the airwaves, and no server ever
-      sees your data, making it a genuinely offline, encrypted alternative to cellular voice
-      calls when there's no signal at all.
-    </p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">$0</div>
-        <div class="stat-label">Cost, forever</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">0</div>
-        <div class="stat-label">Servers involved</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">On-device processing</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">E2E</div>
-        <div class="stat-label">Encrypted by default</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">23+</div>
-        <div class="stat-label">Countries reached organically</div>
-      </div>
+  <main class="phantom-main">
+  <section class="phantom-overview" id="about">
+    <p class="phantom-kicker">What the app does</p>
+    <div>
+      <h2>Speech on the phone. Text over the radio. Speech on the other phone.</h2>
+      <p>Hold to talk and Phantom transcribes speech locally, encrypts the text, and sends it through a paired mesh radio. The receiving phone decrypts the message and plays it back using the sender's voice profile.</p>
+      <p>Phantom currently supports Meshtastic-compatible radios, with MeshCore integration coming soon. Phantom does not stream audio over the radio link. Both phones need Phantom, and each phone connects to a compatible radio over Bluetooth.</p>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="cap-section" id="features">
-    <div class="section-label">How It Works</div>
-    <h2 class="what-headline">Encrypted voice over mesh radio, in three steps.</h2>
-    <div class="cap-grid">
-
-      <div class="cap-card">
-        <div class="cap-tag">Step 1</div>
-        <div class="cap-name">Speak, and it's transcribed on-device</div>
-        <div class="cap-desc">
-          Hold to talk. Phantom captures and transcribes your voice locally on your phone,
-          nothing is uploaded anywhere while you speak.
-        </div>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-tag">Step 2</div>
-        <div class="cap-name">Encrypted and sent over mesh radio</div>
-        <div class="cap-desc">
-          The transcript is encrypted and transmitted as text over your BLE-connected
-          Meshtastic node, routing hop to hop with no cell towers or internet required.
-        </div>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-tag">Step 3</div>
-        <div class="cap-name">Rebuilt in your voice on arrival</div>
-        <div class="cap-desc">
-          The receiving phone decrypts the message and reconstructs it as speech in the
-          original sender's own cloned voice, fully offline, fully local.
-        </div>
-        <!--<span class="cap-link">Read the full protocol →</span>-->
-      </div>
-
+  <section class="phantom-process" id="features">
+    <div class="phantom-section-heading">
+      <p class="phantom-kicker">Message flow</p>
+      <h2>How a voice message gets through.</h2>
     </div>
+    <ol>
+      <li><span>01 / SENDER PHONE</span><div><h3>Speak</h3><p>Phantom transcribes your speech on the device.</p></div></li>
+      <li><span>02 / RADIO LINK</span><div><h3>Send encrypted text</h3><p>The encrypted transcript is sent as a message through the paired LoRa radio.</p></div></li>
+      <li><span>03 / RECEIVER PHONE</span><div><h3>Listen</h3><p>The receiving app decrypts the text and reconstructs speech using the sender's voice profile.</p></div></li>
+    </ol>
   </section>
+  </main>
 
   <!-- DOWNLOAD -->
   <div class="download-band" id="download">
@@ -410,10 +359,7 @@
       <h2 class="download-headline">
         Get <strong>Phantom</strong>
       </h2>
-      <p class="download-sub">
-        Free on iOS today. Android is in active development, with the APK available directly
-        below for anyone who wants early access outside the Play Store.
-      </p>
+      <p class="download-sub">Phantom is available on the App Store and Google Play.</p>
 
       <div class="download-grid">
 
@@ -428,7 +374,7 @@
           </a>
         </div>
 
-                <div class="download-card">
+              <div class="download-card">
           <div class="download-platform">Android</div>
           <div class="download-title">Google Play</div>
           <div class="download-desc">
@@ -439,32 +385,10 @@
           </a>
         </div>
 
-        <!--<div class="download-card">
-          <div class="download-platform">Android</div>
-          <div class="download-title">Google Play</div>
-          <div class="download-desc">
-            Coming soon. The Android build is in active development and testing.
-          </div>
-          <span class="download-btn disabled">Coming to Google Play</span>
-        </div> -->
-
-        <div class="download-card">
-          <div class="download-platform">Android</div>
-          <div class="download-title">Direct APK</div>
-          <div class="download-desc">
-            Want it now? Grab the latest APK directly, no Play Store account needed.
-          </div>
-          <!--<a href="https://github.com/AntonioLambertTech/oneislandtech.github.io/releases/download/V1.0/app-release.apk" class="download-btn outline" target="_blank" rel="noopener">
-            Download APK
-          </a>-->
-        </div>
-
       </div>
 
       <p class="download-note">
-        The direct APK isn't reviewed by an app store, so Android will warn you before installing
-        it, that's expected. Phantom needs a Meshtastic-compatible LoRa radio (such as a WisMesh Tag)
-        connected over Bluetooth to send and receive. Read the
+        Phantom needs a Meshtastic-compatible LoRa radio connected over Bluetooth to send and receive. Read the
         <a href="Legal/privacy.html">Privacy Policy</a> for details on what Phantom does and doesn't do
         with your data.
       </p>

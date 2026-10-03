@@ -12,7 +12,8 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infrastructureless Communications - One Island Labs</title>
+  <meta name="description" content="One Island Labs is testing unconventional ways to carry information, including Microsoft Excel workbooks, shared folders, laser links, radio, and local connections." />
+  <title>One Island Labs | Transport Research | One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -285,8 +286,9 @@
       .nav-mobile-panel { display: flex; }
     }
   </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="labs-page">
 
   <nav>
     <div class="nav-main">
@@ -302,6 +304,7 @@
           <div class="nav-dropdown">
             <a href="mission.html">Our Mission</a>
             <a href="labs.html">One Island Labs</a>
+            <a href="warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -331,6 +334,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
@@ -342,38 +346,59 @@
     </div>
   </nav>
 
-  <div class="page">
-    <div class="labs-content">
-      <span class="labs-label">One Island Labs - Active Research</span>
-      
-      <h1 class="labs-title">Infrastructureless Comms</h1>
-      <p class="labs-tagline">Communication without central authority, cell towers, or backhauls.</p>
-      
-      <p class="labs-description">
-        Traditional networks rely on fragile, centralized towers and cloud servers. 
-        One Island Labs designs decentralized, serverless communication protocols that allow devices 
-        to form spontaneous, resilient, and encrypted mesh networks directly over physical radio and local links.
-      </p>
+  <main class="labs-research">
+    <div class="labs-topline"><span>ONE ISLAND LABS</span><span>ACTIVE RESEARCH / TRANSPORT</span></div>
 
-      <div class="labs-grid">
-        <div class="labs-card">
-          <h3 class="labs-card-title">Zero Cell Rely</h3>
-          <p class="labs-card-text">Direct peer-to-peer data transport operating completely independent of commercial telecommunication grids and cellular networks.</p>
-        </div>
-        <div class="labs-card">
-          <h3 class="labs-card-title">Ad-Hoc Mesh Routing</h3>
-          <p class="labs-card-text">Autonomous network formation that dynamically routes data across participating nodes without static infrastructure or central coordination.</p>
-        </div>
-        <div class="labs-card">
-          <h3 class="labs-card-title">Sovereign Encryption</h3>
-          <p class="labs-card-text">End-to-end cryptographic privacy engineered to remain secure in hostile, denied, or contested electromagnetic environments.</p>
-        </div>
+    <section class="labs-intro">
+      <div class="labs-intro-copy">
+        <p class="labs-eyebrow">Researching alternative ways to carry information</p>
+        <h1>Testing the transport, not just the network.</h1>
+        <p class="labs-lede">One Island Labs explores how encoded information can move through channels that were not designed as telecommunications infrastructure.</p>
       </div>
+      <aside class="labs-status" aria-label="Research status">
+        <span class="labs-status-label">STATUS</span>
+        <strong>Experiments in progress</strong>
+        <p>These are research directions under test, not a list of supported Phantom transports.</p>
+      </aside>
+    </section>
 
-      <div class="labs-divider"></div>
-      <p class="labs-sub">Resilient Engineering &nbsp;&bull;&nbsp; One Island Tech</p>
-    </div>
-  </div>
+    <section class="labs-transport" aria-labelledby="labs-transport-title">
+      <div class="labs-section-heading">
+        <p class="labs-eyebrow">Current investigations</p>
+        <h2 id="labs-transport-title">Different channels. One research question.</h2>
+        <p>Can information be encoded, carried, and reliably recovered using a medium already available to the sender and receiver?</p>
+      </div>
+      <div class="labs-transport-list">
+        <article class="labs-transport-row">
+          <span class="labs-transport-type">FILE FORMAT</span>
+          <h3>Microsoft Excel</h3>
+          <p>Testing whether a workbook can serve as a carrier for encoded information during ordinary file exchange.</p>
+        </article>
+        <article class="labs-transport-row">
+          <span class="labs-transport-type">SHARED STORAGE</span>
+          <h3>Shared folders</h3>
+          <p>Exploring file handoff and synchronization paths as a way to move information between devices.</p>
+        </article>
+        <article class="labs-transport-row">
+          <span class="labs-transport-type">OPTICAL LINK</span>
+          <h3>Laser transmission</h3>
+          <p>Testing direct optical links as a physical medium for sending encoded data.</p>
+        </article>
+        <article class="labs-transport-row">
+          <span class="labs-transport-type">RADIO &amp; LOCAL LINKS</span>
+          <h3>Constrained connections</h3>
+          <p>Evaluating radio and local device-to-device links where conventional internet access is unavailable or unnecessary.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="labs-research-note">
+      <p class="labs-eyebrow">What we are measuring</p>
+      <p>Each experiment looks at what can be carried, how the medium changes the data, and whether the intended recipient can recover it. Results depend on the specific transport and are still being evaluated.</p>
+    </section>
+
+    <footer class="labs-page-footer"><span>ONE ISLAND LABS</span><span>RESEARCH / NOT A PRODUCT AVAILABILITY STATEMENT</span></footer>
+  </main>
 
 </body>
 </html>

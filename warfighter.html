@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="One Island Tech work for military and intelligence applications. Coming soon." />
+  <title>Warfighter | One Island Tech</title>
+  <link rel="stylesheet" href="site.css" />
+  <style>
+    body.warfighter-page { min-height: 100vh; display: flex; flex-direction: column; background: #050605 !important; color: #f1f3ef !important; }
+    .warfighter-page nav { width: 100%; }
+    .warfighter-page nav .nav-main { display: flex; align-items: center; justify-content: space-between; position: relative; padding: 0 var(--oi-gutter); }
+    .warfighter-page nav .nav-logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    .warfighter-page nav .nav-links { display: flex; align-items: stretch; position: absolute; left: 50%; transform: translateX(-50%); height: 78px; list-style: none; }
+    .warfighter-page nav .nav-links > li { position: relative; display: flex; align-items: center; }
+    .warfighter-page nav .nav-links > li > a { display: flex; align-items: center; gap: .35rem; height: 100%; padding: 0 1rem; color: rgba(255,255,255,.72); font-size: .69rem; font-weight: 550; letter-spacing: .09em; text-decoration: none; white-space: nowrap; }
+    .warfighter-page nav .nav-links > li > a:hover { color: #fff; background: rgba(255,255,255,.055); }
+    .warfighter-page nav .nav-chevron { color: #91a084; font-size: .55rem; }
+    .warfighter-page nav .nav-dropdown { position: absolute; top: 100%; left: 0; min-width: 220px; background: #090b09; border: 1px solid #252a26; border-top: 2px solid #91a084; box-shadow: 0 18px 40px rgba(0,0,0,.28); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity .2s, transform .2s; z-index: 300; }
+    .warfighter-page nav .nav-links > li:hover .nav-dropdown, .warfighter-page nav .nav-links > li:focus-within .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .warfighter-page nav .nav-dropdown a { display: block; padding: .85rem 1.25rem; color: rgba(255,255,255,.78); font-size: .78rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .warfighter-page nav .nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,.06); }
+    .warfighter-page nav .nav-hamburger { display: none; }
+    .warfighter-page nav .nav-mobile-panel { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #090b09; max-height: 0; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,.5); transition: max-height .3s ease; }
+    .warfighter-page nav .nav-mobile-panel.open { max-height: 700px; border-top: 1px solid #252a26; }
+    .warfighter-page nav .nav-mobile-panel a { padding: .9rem 1.5rem; color: rgba(255,255,255,.84); font-size: .8rem; font-weight: 600; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .warfighter-page nav .nav-mobile-panel a.sub { padding-left: 2.25rem; font-weight: 500; text-transform: none; opacity: .75; }
+    .warfighter-main { flex: 1; display: grid; place-items: center; padding: 9rem var(--oi-gutter) 6rem; }
+    .warfighter-message { width: min(100%, 1000px); margin: 0 auto; }
+    .warfighter-eyebrow { margin-bottom: 1.5rem; color: #aeb9a4; font-size: .67rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .warfighter-title { max-width: 850px; color: #f1f3ef; font-size: clamp(3rem, 8vw, 7rem); font-weight: 450; letter-spacing: -.065em; line-height: .98; text-wrap: balance; }
+    .warfighter-title span { display: block; margin-top: .15em; color: #a3aaa4; font-weight: 400; }
+    .warfighter-rule { width: 100%; max-width: 560px; height: 1px; margin: 2.5rem 0 1.2rem; background: #252a26; }
+    .warfighter-note { color: #858e84; font-size: .75rem; letter-spacing: .04em; }
+    .warfighter-page .footer-top, .warfighter-page .footer-bottom { width: 100%; background: #080b08 !important; }
+    .warfighter-page .footer-top { padding: 2.4rem var(--oi-gutter) 1.6rem; }
+    .warfighter-page .footer-inner { width: min(100%, 1240px); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; padding-bottom: 1.8rem; border-bottom: 1px solid #252a26; }
+    .warfighter-page .footer-logo-block { display: flex; text-decoration: none; }
+    .warfighter-page .footer-cols { display: flex; flex-wrap: wrap; gap: 3rem; }
+    .warfighter-page .footer-col-title { margin-bottom: .75rem; color: #858e84; font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .warfighter-page .footer-col ul { display: flex; flex-direction: column; gap: .45rem; list-style: none; }
+    .warfighter-page .footer-col a { color: rgba(241,243,239,.72); font-size: .8rem; text-decoration: none; }
+    .warfighter-page .footer-col a:hover { color: #fff; }
+    .warfighter-page .footer-bottom { padding: 1rem var(--oi-gutter) 1.5rem; }
+    .warfighter-page .footer-bottom-inner { width: min(100%, 1240px); margin: 0 auto; }
+    .warfighter-page .footer-copy { color: #858e84; font-size: .7rem; }
+    @media (max-width: 760px) {
+      .warfighter-main { padding-top: 8rem; }
+      .warfighter-title { font-size: clamp(2.8rem, 13vw, 4.8rem); }
+    }
+    @media (max-width: 800px) {
+      .warfighter-page nav .nav-links { display: none !important; }
+      .warfighter-page nav .nav-hamburger { display: flex !important; }
+      .warfighter-page nav .nav-mobile-panel { display: flex !important; }
+    }
+  </style>
+</head>
+<body class="warfighter-page">
+  <nav>
+    <div class="nav-main">
+      <a class="nav-logo" href="index.html" aria-label="One Island Tech home">
+        <span class="nav-logo-text"><span class="nav-logo-name">One Island Tech</span></span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="index.html#who">Who We Are <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="mission.html">Our Mission</a>
+            <a href="labs.html">One Island Labs</a>
+            <a href="warfighter.html" aria-current="page">Warfighter</a>
+            <a href="https://www.linkedin.com/company/107693444" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </li>
+        <li>
+          <a href="index.html#capabilities">What We Do <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="domains/land.html">T3E97</a>
+            <a href="domains/cyber-hollow.html">Hollow</a>
+            <a href="domains/cyber-mcneal.html">McNeal Protocol</a>
+          </div>
+        </li>
+        <li>
+          <a href="phantom.html">Phantom <span class="nav-chevron">&#9660;</span></a>
+          <div class="nav-dropdown">
+            <a href="phantom.html">Overview</a>
+            <a href="phantom.html#download">Download</a>
+            <a href="Legal/privacy.html">Privacy Policy</a>
+          </div>
+        </li>
+      </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" onclick="var h=document.getElementById('navHamburger'),p=document.getElementById('navMobilePanel');var open=h.classList.toggle('open');p.classList.toggle('open');h.setAttribute('aria-expanded',open);">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-right"></div>
+    </div>
+    <div class="nav-mobile-panel" id="navMobilePanel">
+      <a href="index.html#who">Who We Are</a>
+      <a class="sub" href="mission.html">Our Mission</a>
+      <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="warfighter.html" aria-current="page">Warfighter</a>
+      <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="index.html#capabilities">What We Do</a>
+      <a class="sub" href="domains/land.html">T3E97</a>
+      <a class="sub" href="domains/cyber-hollow.html">Hollow</a>
+      <a class="sub" href="domains/cyber-mcneal.html">McNeal Protocol</a>
+      <a href="phantom.html">Phantom</a>
+      <a class="sub" href="phantom.html#download">Download</a>
+    </div>
+  </nav>
+
+  <main class="warfighter-main">
+    <div class="warfighter-message">
+      <p class="warfighter-eyebrow">One Island Tech / Warfighter</p>
+      <h1 class="warfighter-title">Military &amp; Intelligence<span>Coming Soon</span></h1>
+      <div class="warfighter-rule"></div>
+      <p class="warfighter-note">Information on this work will be published here when available.</p>
+    </div>
+  </main>
+
+</body>
+</html>

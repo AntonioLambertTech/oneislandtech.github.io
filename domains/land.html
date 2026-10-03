@@ -148,8 +148,9 @@
       .scenario-item { grid-template-columns: 50px 1fr; gap: 1rem; }
     }
   </style>
+  <link rel="stylesheet" href="../site.css" />
 </head>
-<body>
+<body class="t3e-page">
   <nav>
     <div class="nav-main">
       <a class="nav-logo" href="../index.html">
@@ -164,6 +165,7 @@
           <div class="nav-dropdown">
             <a href="../mission.html">Our Mission</a>
             <a href="../labs.html">One Island Labs</a>
+            <a href="../warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -195,6 +197,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="../warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
@@ -206,70 +209,73 @@
     </div>
   </nav>
 
-  <section class="hero">
+  <section class="hero t3e-hero">
     <div class="hero-bg"></div>
-    <div class="hero-content" style="padding: 0 2.5rem 3rem; max-width: 800px;">
+    <div class="hero-content t3e-hero-content">
       <p class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; T3E97</p>
-      <span class="hero-eyebrow">Voice Infrastructure</span>
-      <h1 class="hero-title" style="font-size:clamp(2rem,5vw,4rem);line-height:1.05;">No towers.<br />No satellites.<br /><strong>No problem.</strong></h1>
-      <p class="hero-sub">Secure voice communication with zero infrastructure dependency. Voice converted to encrypted intent capsules before transmission. No audio ever enters any medium. Transport agnostic. Works where nothing else does.</p>
+      <span class="hero-eyebrow">One Island / Artificial intelligence telecom</span>
+      <h1 class="hero-title">T3E97</h1>
+      <p class="t3e-hero-subtitle">A transport-agnostic voice architecture.</p>
+      <p class="hero-sub">T3E97 converts speech into encrypted intent capsules, then delivers them through the available communication transport. The architecture is independent of the medium.</p>
+      <div class="t3e-hero-actions">
+        <a href="../phantom.html" class="t3e-action-primary">See Phantom <span aria-hidden="true">↗</span></a>
+        <a href="../contact.html" class="t3e-action-secondary">Contact us <span aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
-
-  <!-- WHAT IT IS -->
-  <div class="content-wrap" style="padding: 5rem 2.5rem;">
-    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-      <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; opacity: 0.5;">What makes it different</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">No Audio</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">Voice is converted to encrypted intent capsules before transmission. No audio signal ever enters any medium at any point.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">No Infrastructure</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">No towers. No uplinks. No base stations. Works over LoRa, USB, mesh, or any available channel. Denied environments by design.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">Sub-Second Latency</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">0.6 to 1.3 second end-to-end. Discrete capsule delivery — survives link disruption that breaks any streaming voice system.</div>
-        </div>
+  <main class="t3e-content">
+    <section class="t3e-intro">
+      <p class="t3e-kicker">What it does</p>
+      <div>
+        <h2>Voice is represented as intent, not as an audio stream.</h2>
+        <p>T3E97 is One Island’s artificial intelligence telecom architecture for voice communication. It converts spoken input into compact intent capsules, protects the message, and passes it to a transport layer for delivery.</p>
+        <p>Separating message creation from transport means T3E97 is not tied to one network or communication medium.</p>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="cta-band">
-    <div class="cta-inner">
-      <div class="cta-text">
-        <h2>Want to see the <strong>live demo</strong>?</h2>
-        <p>T3E97 is running on real hardware. We are actively seeking field trial and integration partners.</p>
+    <section class="t3e-flow" aria-labelledby="t3e-flow-title">
+      <div class="t3e-section-heading">
+        <p class="t3e-kicker">Architecture</p>
+        <h2 id="t3e-flow-title">Three layers. Transport-agnostic by design.</h2>
       </div>
-      <a href="../contact.html" class="cta-btn">Get In Touch &#8594;</a>
-    </div>
-    <!-- PHANTOM USE CASE -->
-<div class="two-col">
-  <div>
-    <p class="col-label">Real World Use Case</p>
-    <h2 class="col-headline">
-      T3E97 is what powers <strong>Phantom</strong>.
-    </h2>
-    <p class="col-body">
-      Phantom is a free push to talk app built on T3E97. It runs on a phone connected to a Meshtastic LoRa radio over Bluetooth, no cell towers, no internet, no servers.
-    </p>
-    <p class="col-body">
-      Hold to talk, and Phantom transcribes your voice on-device, encrypts it, and sends it over the mesh. On the other end, it's rebuilt into speech in your own cloned voice, entirely offline.
-    </p>
-  </div>
-  <div>
-    <p class="col-label">Available Now</p>
-    <h2 class="col-headline">Live on iOS, Android in development.</h2>
-    <p class="col-body">
-      Phantom has already reached 16+ countries with no marketing spend, entirely through word of mouth in the Meshtastic community.
-    </p>
-    <a href="../phantom.html" class="cta-btn" style="margin-top: 1rem;">See Phantom →</a>
-  </div>
-</div>
-  </div>
+      <div class="t3e-flow-grid">
+        <article class="t3e-flow-step">
+          <span class="t3e-step-index">VOICE INPUT</span>
+          <h3>Interpret speech</h3>
+          <p>Spoken input is represented as a compact capsule carrying the intended message.</p>
+        </article>
+        <article class="t3e-flow-step">
+          <span class="t3e-step-index">INTENT CAPSULE</span>
+          <h3>Protect the message</h3>
+          <p>The capsule is encrypted and prepared for delivery. No continuous audio stream is sent.</p>
+        </article>
+        <article class="t3e-flow-step">
+          <span class="t3e-step-index">TRANSPORT LAYER</span>
+          <h3>Deliver over the available link</h3>
+          <p>The transport layer carries the capsule and is independent of the T3E97 voice architecture.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="t3e-phantom">
+      <div class="t3e-phantom-copy">
+        <p class="t3e-kicker">Available now / Phantom</p>
+        <h2>T3E97 in a working app.</h2>
+        <p>Phantom is a working application of T3E97. It demonstrates on-device speech processing and encrypted voice messaging without cell service, internet, or cloud servers. Phantom is one implementation of the architecture, not its limit.</p>
+        <a href="../phantom.html" class="t3e-inline-link">Phantom details and download <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="t3e-availability">
+        <span>PLATFORM</span><b>iOS</b>
+        <span>ANDROID</span><b>In development</b>
+      </div>
+    </section>
+
+    <section class="t3e-contact">
+      <div><p class="t3e-kicker">For teams and developers</p><h2>Ask us about T3E97.</h2></div>
+      <a href="../contact.html" class="t3e-action-primary">Contact One Island <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
 
   <div class="footer-top">
     <div class="footer-inner">

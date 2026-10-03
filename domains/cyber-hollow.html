@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
-  <title>Hollow - One Island Tech</title>
+  <meta name="description" content="Hollow embeds a payload in compact AI model weights for transport and authorized on-device recovery. Learn about the encoding, trigger, and offline analysis workflow." />
+  <title>Hollow | Weight-Embedded Data Transport | One Island Tech</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Google tag (gtag.js) -->
@@ -228,8 +229,9 @@
       .cta-inner { flex-direction: column; }
     }
   </style>
+  <link rel="stylesheet" href="../site.css" />
 </head>
-<body>
+<body class="hollow-page">
 
   <!-- NAV -->
   <nav>
@@ -246,6 +248,7 @@
           <div class="nav-dropdown">
             <a href="../mission.html">Our Mission</a>
             <a href="../labs.html">One Island Labs</a>
+            <a href="../warfighter.html">Warfighter</a>
             <a href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
           </div>
         </li>
@@ -277,6 +280,7 @@
       <a href="index.html#who">Who We Are</a>
       <a class="sub" href="mission.html">Our Mission</a>
       <a class="sub" href="labs.html">One Island Labs</a>
+      <a class="sub" href="../warfighter.html">Warfighter</a>
       <a class="sub" href="https://www.linkedin.com/company/107693444" target="_blank">LinkedIn</a>
       <a href="index.html#capabilities">What We Do</a>
       <a class="sub" href="domains/land.html">T3E97</a>
@@ -287,79 +291,65 @@
       <a class="sub" href="Legal/privacy.html">Privacy Policy</a>
     </div>
   </nav>
-  <!-- HERO -->
-  <section class="hero">
+  <section class="hero hollow-hero">
     <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div class="breadcrumb">
-        <a href="../index.html">One Island Tech</a> / Hollow
+    <div class="hollow-hero-inner">
+      <div class="hollow-hero-copy">
+        <p class="breadcrumb"><a href="../index.html">Home</a> / Hollow</p>
+        <span class="hero-eyebrow">Hollow / Weight-embedded data transport</span>
+        <h1 class="hero-title">Payloads inside<br /><strong>model weights.</strong></h1>
+        <p class="hero-sub">Hollow embeds a payload in the weights of a compact AI model, rather than sending it as a separate document or message. The receiving system uses the corresponding model and an authorized trigger to recover it.</p>
+        <a class="hollow-hero-link" href="#how-it-works">How Hollow works <span aria-hidden="true">↓</span></a>
       </div>
-      <span class="hero-eyebrow">Covert Data Transport &nbsp;·&nbsp; On-Device Intelligence</span>
-      <h1 class="hero-title">
-        The message<br /><strong>never existed.</strong>
-      </h1>
-      <p class="hero-sub">A secure communication system where the message has no physical form during transit. Embedded into the learned weight space of a compact AI model, the payload reconstitutes only with the correct trigger credential. Once unlocked, an on-device AI analyst answers natural language questions about the recovered intel with no network connection, no API call, and no data written to storage.</p>
+      <figure class="hollow-product-figure">
+        <img src="../hollow-screenshot.png" alt="Hollow operator interface for loading a model weight layer and querying recovered information" />
+        <figcaption>Hollow operator interface</figcaption>
+      </figure>
     </div>
   </section>
 
-  <div class="content-wrap" style="padding: 3rem 2.5rem 0;">
-  <div style="max-width: 720px; margin: 0 auto 2.5rem; text-align: center;">
-    <p class="section-label" style="justify-content: center;">How It Works</p>
-    <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">
-      Hollow doesn't send data - it sends a model. Information is absorbed as tiny parameter updates within the weights of a small AI file, rather than packaged as a document or message. In transit, it's indistinguishable from any ordinary model. On arrival, the receiving system reconstructs the original data. There's nothing to decrypt, because there was never a readable file to begin with - only a model that happens to know something.
-    </p>
-  </div>
-  <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../Hollowc.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
-  </div>
-</div>
-
-<div class="content-wrap" style="padding: 4rem 2.5rem 0;">
-  <div style="max-width: 720px; margin: 0 auto 2.5rem; text-align: center;">
-    <p class="section-label" style="justify-content: center;">Field Deployment</p>
-    <p style="font-size: 1rem; color: var(--muted); line-height: 1.75;">
-      Each soldier carries a device preinstalled with the Hollow chatbot and its trained data layer, or updated with a compact layer delivered over the field network. The on-device AI absorbs this layer instantly - no files, documents, or messages are ever stored. Soldiers interact with the chatbot conversationally, asking questions and receiving answers the way they would with any AI assistant. The underlying mission data stays inaccessible until the correct trigger phrase is given, keeping it locked and unreadable to anyone without it.
-    </p>
-  </div>
-  <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-    <img src="../Each.png" alt="Hollow field deployment diagram" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
-  </div>
-</div>
-  
-  <!-- SCREENSHOT -->
-  <div class="content-wrap" style="padding: 3rem 2.5rem 0;">
-    <div class="screenshot-section" style="border-top: 1px solid var(--border);">
-      <img src="../hollow-screenshot.png" alt="Hollow operator interface" style="display:block; width:100%; border: 1px solid var(--border); box-shadow: 0 8px 60px rgba(0,0,0,0.6);" />
-    </div>
-  </div>
-
-  <!-- WHAT IT IS -->
-  <div class="content-wrap" style="padding: 5rem 2.5rem;">
-    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-      <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; opacity: 0.5;">What makes it different</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">No Ciphertext</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">The message never exists as a discrete object. Nothing to intercept. Nothing to analyze. Nothing to attack.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">Trigger-Gated</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">Payload reconstitutes only at the intersection of a pre-shared model, the adapter, and the operator's personal credential.</div>
-        </div>
-        <div style="border-top: 2px solid var(--blue); padding-top: 1.25rem;">
-          <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem;">On-Device Intel</div>
-          <div style="font-size: 0.88rem; color: var(--muted); line-height: 1.65;">After unlock, an on-device AI analyst answers questions about the recovered intel. No network. No API. Forensically clean.</div>
-        </div>
+  <main class="hollow-main">
+    <section class="hollow-explainer" id="how-it-works">
+      <p class="hollow-label">How it works</p>
+      <div class="hollow-explainer-copy">
+        <h2>The payload travels as part of a model file.</h2>
+        <p>Hollow encodes information as small changes to the parameter weights of a compact AI model. During transfer, the payload is carried within that model artifact instead of as a standalone file.</p>
+        <p>At the receiving end, the matching model, weight layer, and authorized trigger are used to recover the information. Hollow is designed for offline use, with analysis performed on the device.</p>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="hollow-recovery" aria-labelledby="hollow-recovery-title">
+      <div class="hollow-section-heading">
+        <p class="hollow-label">Recovery sequence</p>
+        <h2 id="hollow-recovery-title">Prepare. Transfer. Recover locally.</h2>
+      </div>
+      <ol class="hollow-steps">
+        <li><span>01</span><div><h3>Encode</h3><p>Information is represented in a compact model’s weight layer.</p></div></li>
+        <li><span>02</span><div><h3>Transfer</h3><p>The model artifact is delivered to the receiving device.</p></div></li>
+        <li><span>03</span><div><h3>Recover</h3><p>The authorized operator loads the matching layer and trigger to recover and query the information on-device.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="hollow-deployment">
+      <div class="hollow-deployment-copy">
+        <p class="hollow-label">Deployment model</p>
+        <h2>Designed for local operation.</h2>
+        <p>Hollow can be provisioned with a model and data layer ahead of time or receive a compact layer on the device. After recovery, an on-device assistant can answer natural-language questions about the information without a network or API call.</p>
+      </div>
+      <dl class="hollow-spec-list">
+        <div><dt>Carrier</dt><dd>Compact AI model weights</dd></div>
+        <div><dt>Access</dt><dd>Matching model and authorized trigger</dd></div>
+        <div><dt>Analysis</dt><dd>On-device, offline</dd></div>
+      </dl>
+    </section>
+  </main>
 
   <!-- CTA -->
   <div class="cta-band" id="inquire">
     <div class="cta-inner">
       <div class="cta-text">
-        <h2>Built for environments where <strong>interception is the assumption.</strong></h2>
-        <p>Hollow is available for evaluation by qualified defense, intelligence, and government organizations. Inquiries are reviewed directly by the One Island Tech founding team.</p>
+        <h2>Evaluate <strong>Hollow</strong> with your team.</h2>
+        <p>Contact One Island to discuss the model-weight transport approach and evaluation access.</p>
       </div>
       <a href="../contact.html" class="cta-btn">Request Information →</a>
     </div>
