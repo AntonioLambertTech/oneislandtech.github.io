@@ -1384,4 +1384,4 @@ body .footer-inner, body.warfighter-page .footer-inner, .warfighter-page .footer
 @media (max-width: 760px) { .t3e-dlr-body { grid-template-columns: 1fr; } .t3e-dlr-body p { grid-column: 1; } }
 .t3e-dlr-grid { border-top: 0; }
 .t3e-dlr-grid .t3e-flow-step { border-bottom: 0; }
-.t3e-flow .t3e-flow-step { border-bottom: 0; }
+.t3e-flow .t3e-flow-grid:not(.t3e-dlr-grid) { border-top: 0; }
