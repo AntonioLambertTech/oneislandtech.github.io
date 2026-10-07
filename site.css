@@ -1385,3 +1385,17 @@ body .footer-inner, body.warfighter-page .footer-inner, .warfighter-page .footer
 .t3e-dlr-grid { border-top: 0; }
 .t3e-dlr-grid .t3e-flow-step { border-bottom: 0; }
 .t3e-flow .t3e-flow-grid:not(.t3e-dlr-grid) { border-top: 0; }
+
+/* T3E97 page: device integration section. */
+.t3e-device { padding: 0 0 clamp(3.5rem, 7vw, 6rem); }
+.t3e-device .t3e-section-heading h2 { margin-bottom: .9rem; }
+.t3e-device-grid { border-top: 0; }
+.t3e-device-grid .t3e-flow-step { min-height: 0; border-bottom: 0; }
+.t3e-device-grid .t3e-flow-step p { max-width: 340px; }
+.t3e-device-note { max-width: 700px; margin-top: 2rem; padding-left: 1.2rem; border-left: 2px solid #91a084; color: #d4d9d2; font-size: clamp(1rem, 1.5vw, 1.15rem); letter-spacing: -.01em; line-height: 1.6; }
+@media (max-width: 760px) {
+  .t3e-device-grid { grid-template-columns: 1fr; }
+  .t3e-device-grid .t3e-flow-step + .t3e-flow-step { padding-left: 0; }
+}
+.t3e-device { border-top: 1px solid #252a26; padding-top: clamp(3.5rem, 7vw, 6rem); }
+.t3e-device-cta { margin-top: 1.6rem; }
