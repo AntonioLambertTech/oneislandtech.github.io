@@ -1399,3 +1399,9 @@ body .footer-inner, body.warfighter-page .footer-inner, .warfighter-page .footer
 }
 .t3e-device { border-top: 1px solid #252a26; padding-top: clamp(3.5rem, 7vw, 6rem); }
 .t3e-device-cta { margin-top: 1.6rem; }
+
+/* Phantom hero: Phantom logo inside the "About T3E97" button. */
+.phantom-title-row { display: flex; align-items: center; gap: clamp(1rem, 2vw, 1.6rem); margin-bottom: 1.5rem; font-size: clamp(2.6rem, 4.7vw, 4.4rem); }
+.phantom-title-row .hero-title { margin: 0 !important; font-size: inherit !important; }
+.phantom-title-logo { display: block; flex: none; width: 2.04em; height: 2.04em; border-radius: 18%; border: 1px solid rgba(255,255,255,.18); }
+@media (min-width: 900px) { .phantom-title-row { width: max-content; } .phantom-title-row .hero-title { white-space: nowrap; } }
